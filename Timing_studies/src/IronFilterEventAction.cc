@@ -168,7 +168,7 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
               //tmp_volume_name = stepCollection[i].GetVolumeName();
               //if ((stepCollection[i].GetParticleName()== "alpha"&& (stepCollection[i].GetVolumeName()!="helium") && (stepCollection[i].GetDepositedEnergy()!=0) )
               //||(stepCollection[i].GetParticleName()== "neutron" && (stepCollection[i].GetVolumeName()=="helium") )) {
-              if ((stepCollection[i].GetParticleName()== "alpha") || (stepCollection[i].GetParticleName()== "neutron")) {
+              if ( ( (stepCollection[i].GetParticleName()== "alpha") && ( isdigit(stepCollection[i].GetVolumeName()[0]) ) && (stepCollection[i].GetDepositedEnergy() !=0)  ) || (stepCollection[i].GetParticleName()== "neutron")) {
                 eventID = stepCollection[i].GetEventID();
                 trackID = stepCollection[i].GetTrackID();
                 stepID = stepCollection[i].GetStepID();
@@ -207,7 +207,8 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
                 //                          <<"  "<<tmp_particle_name
                 //                          <<"  "<<tmp_volume_name
                 //                          <<"  "<<Eki
-                //                          <<"   "<<global_time/1000<<G4endl; //time in µs
+                //                          <<"   "<<global_time/1000
+                //                          <<"   "<<edep<<G4endl; //time in µs
 
                 data_tree->Fill();
               }
