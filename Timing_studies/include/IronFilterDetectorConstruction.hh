@@ -86,6 +86,8 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
     const G4VPhysicalVolume* GetinnerBPolyPV() const;
     const G4VPhysicalVolume* GetfilterscandiumPV() const; //Test_LEFTSIDE
     const G4VPhysicalVolume* Getfilterscandium2PV() const;
+    const G4VPhysicalVolume* GetLeftSideBpolyshieldPV() const;
+    const G4VPhysicalVolume* GetRightSideBpolyshieldPV() const;
 
 
     //fridge
@@ -179,6 +181,8 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
     G4VPhysicalVolume* glasswindow_PV;
     G4VPhysicalVolume* reardoor_PV;
     G4VPhysicalVolume* Insulation_PV;
+    G4VPhysicalVolume* Left_Side_Bpoly_shield_PV;
+    G4VPhysicalVolume* Right_Side_Bpoly_shield_PV;
 
     //fridge
     G4VPhysicalVolume* DilutionUnit_PV;
@@ -601,6 +605,14 @@ inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetConcreteSuppo
 
 inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetInsulationPV() const {
   return Insulation_PV;
+}
+
+inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetLeftSideBpolyshieldPV() const {
+  return Left_Side_Bpoly_shield_PV;
+}
+
+inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetRightSideBpolyshieldPV() const {
+  return Right_Side_Bpoly_shield_PV;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
