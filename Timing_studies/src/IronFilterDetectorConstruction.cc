@@ -653,7 +653,10 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
     G4double OneKShield_Height = 0.881*m;
 
     //G4double DilutionUnit_Radius = 10.0*cm;
-    G4double DilutionUnit_Radius = 5.0*cm;
+    //G4double DilutionUnit_Radius = 5.0*cm;
+    //G4double DilutionUnit_Height = 5.0*cm;
+    //G4double DilutionUnit_Radius = 10.0*cm;
+    G4double DilutionUnit_Radius = 3.0*cm;
     G4double DilutionUnit_Height = 5.0*cm;
 
     G4double DilutionChamber_Radius = DilutionUnit_Radius;//10.0*cm
@@ -698,8 +701,8 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
     G4double Front_Moderator_Thickness=0.2*cm; //changes this
     G4double Back_Moderator_Thickness=0.2*cm;
     //G4double Inner_Radius =30.0*cm;
-    G4double Inner_Radius =1.0*m;
-    G4double Radial_thickness=10.0*cm;//10.0*cm;
+    G4double Inner_Radius =0.3*m;
+    G4double Radial_thickness=90.0*cm;//10.0*cm;;
     G4double Mid_Acrylic_thickness=0.6*cm;
     //G4double Mid_Acrylic_thickness=(4.0/4.0)*2.54*cm;
     G4double EJ426_thickness=0.25*2*mm;
@@ -1073,7 +1076,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
 
     ////////////////////////////////////////
     ////////Backing Detector begins/////////
-    G4double second_detector_z =  100.0*cm;
+    G4double second_detector_z =  150.0*cm;
     //Second detector
     //Front Polyethylene layer, front is in -ve z axis
     G4VSolid* shielding_lead_S = new G4Tubs("shielding_lead", Inner_Radius, Inner_Radius+ Radial_thickness,(Front_Moderator_Thickness/2.0), startAngle, spanningAngle);
@@ -1106,26 +1109,26 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
 
 
   //First detector, distance between the helium Cell and the Detector is given
-  G4double first_detector_z =  150.0*cm;//45.0*cm
-  shielding_lead_PV_2 = new G4PVPlacement(turnAlongX, G4ThreeVector(0., -(first_detector_z-(shieldHeight-Front_Moderator_Thickness)/2.0), 0.), shielding_lead_LV, "1stTitanium_Reflector_A", vacuum_solid_LV, false, 0, fCheckOverlaps);
-  Iron_solid_PV_2 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(first_detector_z+(shieldHeight-Back_Moderator_Thickness)/2.0),0), Iron_solid_LV, "1st_SiPM_A",vacuum_solid_LV,false, 0, fCheckOverlaps);
+  //G4double first_detector_z =  100.0*cm;//45.0*cm
+  //shielding_lead_PV_2 = new G4PVPlacement(turnAlongX, G4ThreeVector(0., -(first_detector_z-(shieldHeight-Front_Moderator_Thickness)/2.0), 0.), shielding_lead_LV, "1stTitanium_Reflector_A", vacuum_solid_LV, false, 0, fCheckOverlaps);
+  //Iron_solid_PV_2 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(first_detector_z+(shieldHeight-Back_Moderator_Thickness)/2.0),0), Iron_solid_LV, "1st_SiPM_A",vacuum_solid_LV,false, 0, fCheckOverlaps);
 
-  G4LogicalVolume *DT_solid_LV_2 = new G4LogicalVolume(DT_solid_S, Acrylic,"DT_solid" );
-  DT_solid_PV_2 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(first_detector_z+(shieldHeight-2*Back_Moderator_Thickness-Mid_Acrylic_thickness)/2.0),0), DT_solid_LV_2, "1st_Scintillator_A",  vacuum_solid_LV, false, 0, fCheckOverlaps);
+  //G4LogicalVolume *DT_solid_LV_2 = new G4LogicalVolume(DT_solid_S, Acrylic,"DT_solid" );
+  //DT_solid_PV_2 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(first_detector_z+(shieldHeight-2*Back_Moderator_Thickness-Mid_Acrylic_thickness)/2.0),0), DT_solid_LV_2, "1st_Scintillator_A",  vacuum_solid_LV, false, 0, fCheckOverlaps);
 
-  filter_aluminum_PV_2 = new G4PVPlacement(NO_ROT, G4ThreeVector(0., 0., -(Mid_Acrylic_thickness-EJ426_thickness)/2.0), filter_aluminum_LV, "1st_Leadlayer_A", DT_solid_LV_2, false, 0, fCheckOverlaps);
-  shield_cap_iron_PV_2 = new G4PVPlacement( NO_ROT, G4ThreeVector(0,0,(Mid_Acrylic_thickness-EJ426_thickness)/2.0), shield_cap_iron_LV, "1st_FeCap_A", DT_solid_LV_2, false, 0, fCheckOverlaps );
+  //filter_aluminum_PV_2 = new G4PVPlacement(NO_ROT, G4ThreeVector(0., 0., -(Mid_Acrylic_thickness-EJ426_thickness)/2.0), filter_aluminum_LV, "1st_Leadlayer_A", DT_solid_LV_2, false, 0, fCheckOverlaps);
+  //shield_cap_iron_PV_2 = new G4PVPlacement( NO_ROT, G4ThreeVector(0,0,(Mid_Acrylic_thickness-EJ426_thickness)/2.0), shield_cap_iron_LV, "1st_FeCap_A", DT_solid_LV_2, false, 0, fCheckOverlaps );
 
   //third detector, distance between the helium Cell and the Detector is given
-  G4double third_detector_z =  200.0*cm;
-  shielding_lead_PV_3 = new G4PVPlacement(turnAlongX, G4ThreeVector(0., -(third_detector_z-(shieldHeight-Front_Moderator_Thickness)/2.0), 0.), shielding_lead_LV, "3rdTitanium_Reflector_A", vacuum_solid_LV, false, 0, fCheckOverlaps);
-  Iron_solid_PV_3 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(third_detector_z+(shieldHeight-Back_Moderator_Thickness)/2.0),0), Iron_solid_LV, "3rd_SiPM_A",vacuum_solid_LV,false, 0, fCheckOverlaps);
+  //G4double third_detector_z =  200.0*cm;
+  //shielding_lead_PV_3 = new G4PVPlacement(turnAlongX, G4ThreeVector(0., -(third_detector_z-(shieldHeight-Front_Moderator_Thickness)/2.0), 0.), shielding_lead_LV, "3rdTitanium_Reflector_A", vacuum_solid_LV, false, 0, fCheckOverlaps);
+  //Iron_solid_PV_3 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(third_detector_z+(shieldHeight-Back_Moderator_Thickness)/2.0),0), Iron_solid_LV, "3rd_SiPM_A",vacuum_solid_LV,false, 0, fCheckOverlaps);
 
-  G4LogicalVolume *DT_solid_LV_3 = new G4LogicalVolume(DT_solid_S, Acrylic,"DT_solid" );
-  DT_solid_PV_3 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(third_detector_z+(shieldHeight-2*Back_Moderator_Thickness-Mid_Acrylic_thickness)/2.0),0), DT_solid_LV_3, "3rd_Scintillator_A",  vacuum_solid_LV, false, 0, fCheckOverlaps);
+  //G4LogicalVolume *DT_solid_LV_3 = new G4LogicalVolume(DT_solid_S, Acrylic,"DT_solid" );
+  //DT_solid_PV_3 = new G4PVPlacement( turnAlongX, G4ThreeVector(0,-(third_detector_z+(shieldHeight-2*Back_Moderator_Thickness-Mid_Acrylic_thickness)/2.0),0), DT_solid_LV_3, "3rd_Scintillator_A",  vacuum_solid_LV, false, 0, fCheckOverlaps);
 
-  filter_aluminum_PV_3 = new G4PVPlacement(NO_ROT, G4ThreeVector(0., 0., -(Mid_Acrylic_thickness-EJ426_thickness)/2.0), filter_aluminum_LV, "3rd_Leadlayer_A", DT_solid_LV_3, false, 0, fCheckOverlaps);
-  shield_cap_iron_PV_3 = new G4PVPlacement( NO_ROT, G4ThreeVector(0,0,(Mid_Acrylic_thickness-EJ426_thickness)/2.0), shield_cap_iron_LV, "3rd_FeCap_A", DT_solid_LV_3, false, 0, fCheckOverlaps );
+  //filter_aluminum_PV_3 = new G4PVPlacement(NO_ROT, G4ThreeVector(0., 0., -(Mid_Acrylic_thickness-EJ426_thickness)/2.0), filter_aluminum_LV, "3rd_Leadlayer_A", DT_solid_LV_3, false, 0, fCheckOverlaps);
+  //shield_cap_iron_PV_3 = new G4PVPlacement( NO_ROT, G4ThreeVector(0,0,(Mid_Acrylic_thickness-EJ426_thickness)/2.0), shield_cap_iron_LV, "3rd_FeCap_A", DT_solid_LV_3, false, 0, fCheckOverlaps );
 
 
 
