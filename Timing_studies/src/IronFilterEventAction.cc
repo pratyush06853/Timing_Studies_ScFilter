@@ -104,6 +104,10 @@ void IronFilterEventAction::BeginOfEventAction(const G4Event*){
             data_tree->Branch("process", process_name, "process[16]/C");
         }
     }
+    //At the beginning of the event, insert a special flag.
+    StepInfo stepinfo;
+    stepinfo.SetProcessName( "newEvent" );
+    GetStepCollection().push_back(stepinfo);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

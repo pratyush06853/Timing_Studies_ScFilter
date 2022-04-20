@@ -882,7 +882,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   ////ConcreteSupport_LV->SetVisAttributes(G4VisAttributes(G4Colour::Grey()));
   ConcreteSupport_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
 
-
+/*
   //Insulation but this is actually a surface to see the neutrons coming out of the concrete and borated water
   G4VSolid* Insulation_S = new G4Box("Insulation", Water_cylindercal_can_radius_x/2.0, delta/2.0, (Water_cylindercal_can_height+ConcreteSupport_height)/2.);
   //G4VSolid* Insulation_S = new G4Box("Insulation", 50.0*cm/2.0, delta/2.0, 50.0*cm/2.);
@@ -891,7 +891,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //Insulation_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing-3.0*m, (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness), Insulation_LV, "2ndInsulation", vacuum_solid_LV, false, 0, fCheckOverlaps);
   Insulation_LV->SetVisAttributes(G4VisAttributes(G4Colour::Yellow()));
 
-
+*/
   // Poly need to change
   G4VSolid* Main_1_S = new G4Box("Main_1_solid", Water_cylindercal_can_radius_x/2.0+ Side_shield_thickness +30.0*cm, (Water_cylindercal_can_height+ConcreteSupport_height)/2.,colimator_length/2.0);
   //G4VSolid* Main_1_S = new G4Box("Main_1_solid", fMultiplierLeadRadius*2 , fMultiplierLeadRadius*2, colimator_length/2.0);
@@ -1073,6 +1073,18 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   OVCShield_PV = new G4PVPlacement(NO_ROT, position_OVCShield , OVCShield_LV, "OVCShield", vacuum_solid_LV, false, 0, fCheckOverlaps);
   OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
   OVCShield_LV->SetVisAttributes(G4VisAttributes::Invisible);
+
+  G4double thickness_Lead=18*cm;
+  G4double height_Lead=40*cm;
+  // Lead shield around the OVC to block the gamma:
+  G4Tubs* Shielding_Lead_S = new G4Tubs("Shielding_Lead_solid2", OVCShield_Radius + OVCShield_Width, OVCShield_Radius + OVCShield_Width + thickness_Lead, height_Lead/2.0 ,startAngle, spanningAngle/2.0);
+  G4Tubs* hole_S2 = new G4Tubs("hole_solid2", 0.0 , 2.5*cm, thickness_Lead/2.0 + 2.0*cm  ,startAngle, spanningAngle);
+  G4SubtractionSolid* BucketShielding_Lead_S= new G4SubtractionSolid("BucketShielding_Lead_S", Shielding_Lead_S, hole_S2, turnAlongX, G4ThreeVector{0,(OVCShield_Radius + OVCShield_Width) + thickness_Lead/2.0,0});
+  G4LogicalVolume*  BucketShielding_Lead_LV= new G4LogicalVolume(BucketShielding_Lead_S, Lead, "BucketShielding_Lead");
+  BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
+  Insulation_PV = new G4PVPlacement(NO_ROT, G4ThreeVector{0,0,0}, BucketShielding_Lead_LV, "BucketShielding_Lead",  vacuum_solid_LV, false, 0, true);
+
+
 
     ////////////////////////////////////////
     ////////Backing Detector begins/////////
