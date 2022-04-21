@@ -164,7 +164,7 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
       }
 
         // There is coincidence. Fill the wanted tracks
-        if( if_helium==1  ){
+        if( if_helium==1 ){
         //if(if_helium==1 && (if_fourth == 1||if_second == 1)) {
         //if(if_first == 1||if_second == 1||if_third == 1||if_fourth == 1||if_fifth == 1||if_sixth == 1) {
 
