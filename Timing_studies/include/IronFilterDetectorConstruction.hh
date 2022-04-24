@@ -75,6 +75,8 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
     const G4VPhysicalVolume* GetglasswindowPV() const;
     const G4VPhysicalVolume* GetreardoorPV() const;
     const G4VPhysicalVolume* GetInsulationPV() const;
+    const G4VPhysicalVolume* GetBucketShieldingLeadPV() const;
+    const G4VPhysicalVolume* GetLeadinPolyPV() const;
     const G4VPhysicalVolume* GetboratedwaterPV() const;
     const G4VPhysicalVolume* GetcollimationholePV() const;
     const G4VPhysicalVolume* GetConcreteSupportPV() const;
@@ -183,6 +185,8 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
     G4VPhysicalVolume* glasswindow_PV;
     G4VPhysicalVolume* reardoor_PV;
     G4VPhysicalVolume* Insulation_PV;
+    G4VPhysicalVolume* BucketShielding_Lead_PV;
+    G4VPhysicalVolume* LeadinPoly_PV;
     G4VPhysicalVolume* Up_Bpoly_shield_PV;
     G4VPhysicalVolume* Left_Side_Bpoly_shield_PV;
     G4VPhysicalVolume* Right_Side_Bpoly_shield_PV;
@@ -608,6 +612,14 @@ inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetConcreteSuppo
 
 inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetInsulationPV() const {
   return Insulation_PV;
+}
+
+inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetBucketShieldingLeadPV() const {
+  return BucketShielding_Lead_PV;
+}
+
+inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetLeadinPolyPV() const {
+  return LeadinPoly_PV;
 }
 
 inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetUpBpolyshieldPV() const {
