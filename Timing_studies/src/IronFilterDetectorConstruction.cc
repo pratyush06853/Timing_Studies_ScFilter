@@ -921,7 +921,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
 
   // Poly need to change
   G4VSolid* Main_LeadinPoly_S = new G4Tubs("Main_1_solid", zeroRadius, LeadinPoly_radius, LeadinPoly_length/2.0, startAngle, spanningAngle);
-  G4VSolid* hole_LeadinPoly_S = new G4Tubs("hole_1_solid", 0 , Scandium_diameter_limited, LeadinPoly_length+3.0*cm/2.0,startAngle, spanningAngle);
+  G4VSolid* hole_LeadinPoly_S = new G4Tubs("hole_1_solid", 0 , Scandium_diameter_limited/2.0, LeadinPoly_length+3.0*cm/2.0,startAngle, spanningAngle);
   G4SubtractionSolid* LeadinPoly_S= new G4SubtractionSolid("LeadinPoly_solid", Main_LeadinPoly_S, hole_LeadinPoly_S, NO_ROT, G4ThreeVector(0., 0, 0));
 
   G4LogicalVolume* LeadinPoly_LV = new G4LogicalVolume(LeadinPoly_S, Lead, "LeadinPoly");
@@ -1106,7 +1106,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
 
   //G4Tubs* Shielding_Lead_S = new G4Tubs("Shielding_Lead_solid2", OVCShield_Radius + OVCShield_Width, OVCShield_Radius + OVCShield_Width + thickness_Lead, height_Lead/2.0 ,startAngle, spanningAngle/2.0);
   G4Polycone* Shielding_Lead_S = new G4Polycone("Shielding_Lead", startAngle, spanningAngle/2.0, 4, z4, ri4, ro4);
-  G4Tubs* hole_S2 = new G4Tubs("hole_solid2", 0.0 , 2.5*cm, thickness_Lead/2.0 + 2.0*cm  ,startAngle, spanningAngle);
+  G4Tubs* hole_S2 = new G4Tubs("hole_solid2", 0.0 , Scandium_diameter_limited/2.0 - 0.5*cm, thickness_Lead/2.0 + 2.0*cm  ,startAngle, spanningAngle);
   G4SubtractionSolid* BucketShielding_Lead_S= new G4SubtractionSolid("BucketShielding_Lead_S", Shielding_Lead_S, hole_S2, turnAlongX, G4ThreeVector{0,(OVCShield_Radius + OVCShield_Width) + thickness_Lead/2.0,0});
   G4LogicalVolume*  BucketShielding_Lead_LV= new G4LogicalVolume(BucketShielding_Lead_S, Lead, "BucketShielding_Lead");
   BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
