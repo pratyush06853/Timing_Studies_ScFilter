@@ -929,7 +929,7 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
   // Lead shield around the OVC to block the gamma:
 
   //lead shield
-  G4double zposition_OVC= 43*cm;
+  G4double zposition_OVC= 47*cm;
   G4double z4[4]=  {-zposition_OVC-OVCShield_Width-thickness_Lead, -zposition_OVC-OVCShield_Width, -zposition_OVC-OVCShield_Width, height_Lead};
   G4double ri4[4]= {0.0, 0.0, OVCShield_Radius + OVCShield_Width ,  OVCShield_Radius + OVCShield_Width };
   G4double ro4[4]= {OVCShield_Radius + OVCShield_Width + thickness_Lead, OVCShield_Radius + OVCShield_Width + thickness_Lead, OVCShield_Radius + OVCShield_Width + thickness_Lead, OVCShield_Radius + OVCShield_Width + thickness_Lead};
