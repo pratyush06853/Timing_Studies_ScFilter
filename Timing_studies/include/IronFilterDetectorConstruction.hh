@@ -69,6 +69,7 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
 
     //lab
     const G4VPhysicalVolume* GetLabFloorWallsolidPV() const;
+    const G4VPhysicalVolume* GetSidesheildsolidPV() const;
     const G4VPhysicalVolume* GetLabFloorExtendedsolidPV() const;
     const G4VPhysicalVolume* GetfrontglassdoorPV() const;
     const G4VPhysicalVolume* GetfrontdoorPV() const;
@@ -179,6 +180,7 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
 
     //lab
     G4VPhysicalVolume* LabFloorWall_solid_PV;
+    G4VPhysicalVolume* Side_sheild_solid_PV;
     G4VPhysicalVolume* LabFloorExtended_solid_PV;
     G4VPhysicalVolume* frontglassdoor_PV;
     G4VPhysicalVolume* frontdoor_PV;
@@ -490,6 +492,10 @@ inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetIronsolidPV1_
 //////////********* LAB ***********//////////////
 inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetLabFloorWallsolidPV() const {
   return LabFloorWall_solid_PV;
+}
+
+inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetSidesheildsolidPV() const {
+  return Side_sheild_solid_PV;
 }
 
 inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetLabFloorExtendedsolidPV() const {

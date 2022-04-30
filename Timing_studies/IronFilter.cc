@@ -45,7 +45,7 @@
 #include "G4RunManager.hh"
 #endif
 
-
+#include "G4ScoringManager.hh"
 #include "G4UImanager.hh"
 #include "G4UIcommand.hh"
 #include "Shielding.hh"
@@ -127,6 +127,9 @@ int main(int argc,char** argv)
 #else
   G4RunManager * runManager = new G4RunManager;
 #endif
+
+  G4ScoringManager * scManager = G4ScoringManager::GetScoringManager();
+  scManager->SetVerboseLevel(1);
 
   // Set mandatory initialization classes
   //
