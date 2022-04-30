@@ -949,9 +949,8 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
   G4Tubs* hole_S2 = new G4Tubs("hole_solid2", 0.0 , Scandium_diameter_limited/2.0 - 0.5*cm, thickness_Lead/2.0 + 2.0*cm  ,startAngle, spanningAngle);
   G4SubtractionSolid* BucketShielding_Lead_S= new G4SubtractionSolid("BucketShielding_Lead_S", Shielding_Lead_S, hole_S2, turnAlongX, G4ThreeVector{0,(OVCShield_Radius + OVCShield_Width) + thickness_Lead/2.0,0});
   G4LogicalVolume*  BucketShielding_Lead_LV= new G4LogicalVolume(BucketShielding_Lead_S, Lead, "BucketShielding_Lead");
-  BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
-  BucketShielding_Lead_PV = new G4PVPlacement(NO_ROT, G4ThreeVector{0,0,0}, BucketShielding_Lead_LV, "BucketShielding_Lead",  vacuum_solid_LV, false, 0, true);
-  //new G4PVPlacement(NO_ROT, G4ThreeVector{0,0,0}, BucketShielding_Lead_LV, "BucketShielding_Lead",  vacuum_solid_LV, false, 0, true);
+  //BucketShielding_Lead_PV = new G4PVPlacement(NO_ROT, G4ThreeVector{0,0,0}, BucketShielding_Lead_LV, "BucketShielding_Lead",  vacuum_solid_LV, false, 0, true);
+  //BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
 
 
 ///////////////////////////////////////
@@ -1201,9 +1200,8 @@ G4VSolid* hole_LeadinPoly_S = new G4Tubs("hole_1_solid", 0 , Scandium_diameter_l
 G4SubtractionSolid* LeadinPoly_S= new G4SubtractionSolid("LeadinPoly_solid", Main_LeadinPoly_S, hole_LeadinPoly_S, NO_ROT, G4ThreeVector(0., 0, 0));
 
 G4LogicalVolume* LeadinPoly_LV = new G4LogicalVolume(LeadinPoly_S, Lead, "LeadinPoly");
- //new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
-LeadinPoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
-LeadinPoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Blue()));
+//LeadinPoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
+//LeadinPoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Blue()));
 
 
 
