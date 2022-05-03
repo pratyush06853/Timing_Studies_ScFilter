@@ -593,7 +593,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   ///////////***********lab room************//////////////////
   //G4double colimator_length=26.0*cm;
   //G4double colimator_length=30.0*cm;
-  G4double colimator_length=45.0*cm;//35.0*cm
+  G4double colimator_length=35.0*cm;//45.0*cm
 
   G4double Side_shield_thickness=20.0*cm;
   //dimension main semicrcular lead
@@ -765,8 +765,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   G4SubtractionSolid* Side_sheild_solid_S= new G4SubtractionSolid("Side_sheild_solid", Side_sheild_Main_S, Side_sheild_Hole_S, NO_ROT, G4ThreeVector(0.,0., 0.));
   G4LogicalVolume* Side_sheild_solid_LV = new G4LogicalVolume(Side_sheild_solid_S, BoratedPoly_15, "Side_sheild_solid");
   //Side_sheild_solid_PV = new G4PVPlacement(turnAlongX, G4ThreeVector{0.0,-20*cm,0.0}, Side_sheild_solid_LV, "Side_sheild", vacuum_solid_LV, false, 0, fCheckOverlaps);
-  Side_sheild_solid_PV = new G4PVPlacement(turnAlongX, G4ThreeVector{0.0,-20*cm,0.0}, Side_sheild_solid_LV, "Side_sheild", vacuum_solid_LV, false, 0, fCheckOverlaps);
-  Side_sheild_solid_LV->SetVisAttributes(G4VisAttributes(G4Colour::Green()));
+  //Side_sheild_solid_LV->SetVisAttributes(G4VisAttributes(G4Colour::Green()));
 
 
 
@@ -1116,9 +1115,9 @@ G4SubtractionSolid* boratedwater_S= new G4SubtractionSolid("boratedwater", Main_
 
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Vacuum, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoraxBoricAcidBuffer, "boratedwater");
-G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Concrete, "boratedwater");
+//G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Concrete, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Water, "boratedwater");
-//G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoratedPoly, "boratedwater");
+G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoratedPoly, "boratedwater");
 boratedwater_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+ Water_cylindercal_can_radius/2.0, (Water_cylindercal_can_height)/2.0 - DT_Ti_T_location - Insulation_Thickness), boratedwater_LV, "BoratedWater", vacuum_solid_LV, false, 0, fCheckOverlaps);
 ////boratedwater_PV = new G4PVPlacement(turnAlongZ, G4ThreeVector(0., fFilterCellSpacing+Water_y/2.0, 0), boratedwater_LV, "BoratedWater", vacuum_solid_LV, false, 0, fCheckOverlaps);
 boratedwater_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
