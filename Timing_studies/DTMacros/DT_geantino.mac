@@ -1,5 +1,5 @@
 /IronFilter/det/setFilterCellSpacing 76.0 cm
-/IronFilter/det/setPolyHeight 10.0 cm #Sc or Mn  
+/IronFilter/det/setPolyHeight 10.0 cm #Mn bore length, Mn leength is fixed in the code  
 /IronFilter/det/setMultiplierLeadHeightFront 15.0 cm
 /IronFilter/det/setModeratorAluminumHeight 30 cm
 /IronFilter/det/setModeratorTitaniumHeight 10.0 cm # to get the DT position add the number till here

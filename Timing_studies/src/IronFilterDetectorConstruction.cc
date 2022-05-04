@@ -563,7 +563,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
     //
     G4double Li6F_thickness=1.0*cm;
     G4double Scandium_diameter_limited=5*cm;//3.5*cm;
-    G4double Scandium_height_limited=fPolyHeight;//5*cm;
+    G4double Scandium_height_limited=10*cm;//fPolyHeight;
     //G4double Pb_radius = fSource_radius + 5.0*cm ;
 
 
@@ -925,7 +925,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   G4SubtractionSolid* LeadinPoly_S= new G4SubtractionSolid("LeadinPoly_solid", Main_LeadinPoly_S, hole_LeadinPoly_S, NO_ROT, G4ThreeVector(0., 0, 0));
 
   G4LogicalVolume* LeadinPoly_LV = new G4LogicalVolume(LeadinPoly_S, Lead, "LeadinPoly");
-  LeadinPoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
+  //LeadinPoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
   LeadinPoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Blue()));
 
 
@@ -1099,7 +1099,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   // Lead shield around the OVC to block the gamma:
 
   //lead shield
-  G4double zposition_OVC= 41*cm;
+  G4double zposition_OVC= 47*cm;
   G4double z4[4]=  {-zposition_OVC-OVCShield_Width-thickness_Lead, -zposition_OVC-OVCShield_Width, -zposition_OVC-OVCShield_Width, height_Lead};
   G4double ri4[4]= {0.0, 0.0, OVCShield_Radius + OVCShield_Width ,  OVCShield_Radius + OVCShield_Width };
   G4double ro4[4]= {OVCShield_Radius + OVCShield_Width + thickness_Lead, OVCShield_Radius + OVCShield_Width + thickness_Lead, OVCShield_Radius + OVCShield_Width + thickness_Lead, OVCShield_Radius + OVCShield_Width + thickness_Lead};
@@ -1109,8 +1109,8 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   G4Tubs* hole_S2 = new G4Tubs("hole_solid2", 0.0 , Scandium_diameter_limited/2.0 - 0.5*cm, thickness_Lead/2.0 + 2.0*cm  ,startAngle, spanningAngle);
   G4SubtractionSolid* BucketShielding_Lead_S= new G4SubtractionSolid("BucketShielding_Lead_S", Shielding_Lead_S, hole_S2, turnAlongX, G4ThreeVector{0,(OVCShield_Radius + OVCShield_Width) + thickness_Lead/2.0,0});
   G4LogicalVolume*  BucketShielding_Lead_LV= new G4LogicalVolume(BucketShielding_Lead_S, Lead, "BucketShielding_Lead");
+  //BucketShielding_Lead_PV = new G4PVPlacement(NO_ROT, G4ThreeVector{0,0,0}, BucketShielding_Lead_LV, "BucketShielding_Lead",  vacuum_solid_LV, false, 0, true);
   BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
-  BucketShielding_Lead_PV = new G4PVPlacement(NO_ROT, G4ThreeVector{0,0,0}, BucketShielding_Lead_LV, "BucketShielding_Lead",  vacuum_solid_LV, false, 0, true);
 
 
 
