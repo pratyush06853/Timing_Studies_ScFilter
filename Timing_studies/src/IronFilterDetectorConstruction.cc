@@ -1104,9 +1104,6 @@ G4LogicalVolume* TestSurface_solid_LV = new G4LogicalVolume(TestSurface_solid_S,
 //TestSurface_solid_PV = new G4PVPlacement(turnAlongZ, G4ThreeVector(0., (fFilterCellSpacing-colimator_length)+(colimator_length+Water_y+20.0*cm)/2.0, 0), TestSurface_solid_LV, "TestSurface", vacuum_solid_LV, false, 0, fCheckOverlaps);
 //TestSurface_solid_LV->SetVisAttributes(G4VisAttributes(G4Colour::Grey()));
 //TestSurface_solid_LV->SetVisAttributes(G4VisAttributes::Invisible);
-
-
-
 //TestSurface_solid_LV->SetVisAttributes(G4VisAttributes::Invisible);
 
 

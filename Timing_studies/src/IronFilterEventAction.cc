@@ -170,7 +170,8 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
 
             for( size_t i=0; i < stepCollection.size(); ++i ){
               //tmp_volume_name = stepCollection[i].GetVolumeName();
-              if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="helium")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
+              //if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="helium")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
+              if (     (stepCollection[i].GetParticleName()== "neutron")    || (stepCollection[i].GetProcessName()=="newEvent") ) {
               //if ((stepCollection[i].GetParticleName()== "alpha"&& (stepCollection[i].GetVolumeName()!="helium") && (stepCollection[i].GetDepositedEnergy()!=0) )
               //||(stepCollection[i].GetParticleName()== "neutron" && (stepCollection[i].GetVolumeName()=="helium") )) {
               //if ( ( (stepCollection[i].GetParticleName()== "alpha") && ( isdigit(stepCollection[i].GetVolumeName()[0]) ) && (stepCollection[i].GetDepositedEnergy() !=0)  ) || (stepCollection[i].GetParticleName()== "neutron")) {
