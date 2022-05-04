@@ -83,6 +83,8 @@ IronFilterDetectorConstruction::IronFilterDetectorConstruction()
    TestSurface_solid_PV(0),
    boratedwater_PV(0),
    multiplier_lead_PV(0),
+   Titanium_shield_PV(0),
+   Manganese_shield_PV(0),
    moderator_aluminum_PV(0),
    moderator_titanium_PV(0),
    filter_scandium_PV(0),
@@ -272,6 +274,9 @@ void IronFilterDetectorConstruction::DefineMaterials()
 
   //Aluminum
   new G4Material("NatAluminum", z = 13.0, a = 26.9815384*g/mole, density = 2.70*g/cm3, kStateSolid, 296*kelvin);
+
+  //Manganese
+  new G4Material("NatManganese", z = 25.0, a = 54.938*g/mole, density = 7.21*g/cm3);
 
 
   //Natural B
@@ -517,6 +522,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   G4Material* BoraxWater = G4Material::GetMaterial("borax_water");
   G4Material* BoraxBoricAcidBuffer = G4Material::GetMaterial("borax_boricacid_buffer");
   G4Material* Copper= G4Material::GetMaterial("NatCu");
+  G4Material* Manganese = G4Material::GetMaterial("NatManganese");
 
   G4Material* EJ4265HD = G4Material::GetMaterial("ej_426_HD");
   G4Material* Polyethylene = G4Material::GetMaterial("polyethylene");
@@ -599,6 +605,9 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //dimension main semicrcular lead
   G4double thickness_Lead=18*cm;
   G4double height_Lead=50*cm;
+
+  G4double Titanium_shield_height= 5*cm ;
+  G4double Manganese_shield_height= 10*cm;
 
   //dimension lead in poly
   G4double LeadinPoly_radius=40.0*cm;
@@ -1216,6 +1225,18 @@ G4LogicalVolume *inner_BPoly_LV = new G4LogicalVolume(inner_BPoly_S, BoratedPoly
 //G4LogicalVolume *inner_BPoly_LV = new G4LogicalVolume(inner_BPoly_S, BoratedPoly,"inner_BPoly" );
 inner_BPoly_PV = new G4PVPlacement( turnAlongX, G4ThreeVector(0., fFilterCellSpacing+NeutronFilter_length/2.0, 0.), inner_BPoly_LV, "inner_BPoly", vacuum_solid_LV, false, 0, fCheckOverlaps);
 inner_BPoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Grey()));
+
+//extra shield layer of Ti
+G4VSolid* Titanium_shield_S = new G4Tubs("Titanium_shield", Scandium_diameter_limited/2.0, fModeratorAluminumRadius , (Titanium_shield_height)/2.0, startAngle, spanningAngle);
+G4LogicalVolume* Titanium_shield_LV = new G4LogicalVolume(Titanium_shield_S, Titanium, "Titanium_shield");
+Titanium_shield_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0,0,NeutronFilter_length/2.0-(fMultiplierLeadHeightRear+fMultiplierLeadHeightFront)-fModeratorAluminumHeight-fModeratorTitaniumHeight-Titanium_shield_height/2.0), Titanium_shield_LV, "Ti_shield", inner_BPoly_LV, false, 0, fCheckOverlaps);
+Titanium_shield_LV->SetVisAttributes(G4VisAttributes(G4Colour::Green()));
+
+//extra shield layer of Mn
+G4VSolid* Manganese_shield_S = new G4Tubs("Manganese_shield", Scandium_diameter_limited/2.0, fModeratorAluminumRadius , (Manganese_shield_height)/2.0, startAngle, spanningAngle);
+G4LogicalVolume* Manganese_shield_LV = new G4LogicalVolume(Manganese_shield_S, Manganese, "Manganese_shield");
+Manganese_shield_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0,0,NeutronFilter_length/2.0-(fMultiplierLeadHeightRear+fMultiplierLeadHeightFront)-fModeratorAluminumHeight-fModeratorTitaniumHeight-Manganese_shield_height/2.0), Manganese_shield_LV, "Mn_shield", inner_BPoly_LV, false, 0, fCheckOverlaps);
+Manganese_shield_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
 
 
 //lead in the form of cylinder as outer shield

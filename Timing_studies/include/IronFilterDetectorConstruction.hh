@@ -83,6 +83,8 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
     const G4VPhysicalVolume* GetConcreteSupportPV() const;
     const G4VPhysicalVolume* GetTestSurfacesolidPV() const;
     const G4VPhysicalVolume* GetmultiplierleadPV() const;
+    const G4VPhysicalVolume* GetTitaniumshieldPV() const;
+    const G4VPhysicalVolume* GetManganeseshieldPV() const;
     const G4VPhysicalVolume* GetmoderatoraluminumPV() const;
     const G4VPhysicalVolume* GetmoderatortitaniumPV() const;
     const G4VPhysicalVolume* GetLeadaroundTiAndFPV() const;
@@ -264,6 +266,8 @@ class IronFilterDetectorConstruction : public G4VUserDetectorConstruction
     G4VPhysicalVolume* ConcreteSupport_PV;
     G4VPhysicalVolume* TestSurface_solid_PV;
     G4VPhysicalVolume* multiplier_lead_PV;
+    G4VPhysicalVolume* Titanium_shield_PV;
+    G4VPhysicalVolume* Manganese_shield_PV;
     G4VPhysicalVolume* moderator_aluminum_PV;
     G4VPhysicalVolume* moderator_titanium_PV;
     G4VPhysicalVolume* Lead_around_TiAndF_PV;
@@ -586,6 +590,14 @@ inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetinnerBPolyPV(
 
 inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetmultiplierleadPV() const {
   return multiplier_lead_PV;
+}
+
+inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetTitaniumshieldPV() const {
+  return Titanium_shield_PV;
+}
+
+inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetManganeseshieldPV() const {
+  return Manganese_shield_PV;
 }
 
 inline const G4VPhysicalVolume* IronFilterDetectorConstruction::GetmoderatoraluminumPV() const {
