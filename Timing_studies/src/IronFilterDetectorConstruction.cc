@@ -169,7 +169,7 @@ IronFilterDetectorConstruction::IronFilterDetectorConstruction()
 
   //fPolyHeight = 41.0*cm;//
   //fPolyHeight = 35.0*cm;//
-  fPolyHeight = 50.0*cm;//30.0*cm
+  fPolyHeight = 30.0*cm;//50.0*cm
 
   //fFilterCellSpacing= 50.0*cm;//5
   fFilterCellSpacing= 60.0*cm+26.0*cm;//50.0*cm+26.0*cm
