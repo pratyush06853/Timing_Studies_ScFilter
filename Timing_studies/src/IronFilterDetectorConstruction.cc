@@ -1009,7 +1009,7 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
   shield_cap_iron_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
 
 
-/*
+
 //First detector, distance between the helium Cell and the Detector is given
 G4double first_detector_z =  30.0*cm;//45.0*cm
 shielding_lead_PV_2 = new G4PVPlacement(turnAlongX, G4ThreeVector(0., -(first_detector_z-(shieldHeight-Front_Moderator_Thickness)/2.0), 0.), shielding_lead_LV, "1stTitanium_Reflector_A", vacuum_solid_LV, false, 0, fCheckOverlaps);
@@ -1069,7 +1069,7 @@ filter_aluminum_PV_1 = new G4PVPlacement(NO_ROT, G4ThreeVector(0., 0., -(Mid_Acr
 G4VSolid* shield_cap_iron_S_1 = new G4Tubs("Shield_cap_iron_1", Inner_Radius-10.0*cm, Inner_Radius+ Radial_thickness-10.0*cm,(EJ426_thickness/2.0), startAngle, spanningAngle);
 G4LogicalVolume *shield_cap_iron_LV_1 = new G4LogicalVolume(shield_cap_iron_S_1, EJ4265HD,"shield_cap_1" );
 shield_cap_iron_PV_1 = new G4PVPlacement( NO_ROT, G4ThreeVector(0,0,(Mid_Acrylic_thickness-EJ426_thickness)/2.0), shield_cap_iron_LV_1, "4th_FeCap_B", DT_solid_LV_1, false, 0, fCheckOverlaps );
-*/
+
 
 /*
 //fifth Detector, distance between the helium Cell and the Detector is given
