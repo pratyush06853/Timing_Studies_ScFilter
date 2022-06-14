@@ -1033,7 +1033,7 @@ filter_aluminum_PV_3 = new G4PVPlacement(NO_ROT, G4ThreeVector(0., 0., -(Mid_Acr
 shield_cap_iron_PV_3 = new G4PVPlacement( NO_ROT, G4ThreeVector(0,0,(Mid_Acrylic_thickness-EJ426_thickness)/2.0), shield_cap_iron_LV, "3rd_FeCap_A", DT_solid_LV_3, false, 0, fCheckOverlaps );
 
 
-
+/*
 //fourth Detector, distance between the helium Cell and the Detector is given
 
 
@@ -1071,7 +1071,7 @@ G4LogicalVolume *shield_cap_iron_LV_1 = new G4LogicalVolume(shield_cap_iron_S_1,
 shield_cap_iron_PV_1 = new G4PVPlacement( NO_ROT, G4ThreeVector(0,0,(Mid_Acrylic_thickness-EJ426_thickness)/2.0), shield_cap_iron_LV_1, "4th_FeCap_B", DT_solid_LV_1, false, 0, fCheckOverlaps );
 
 
-/*
+
 //fifth Detector, distance between the helium Cell and the Detector is given
 G4double fifth_detector_z = 250.0*cm+shieldHeight/2.0;
 
