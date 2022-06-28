@@ -776,7 +776,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //Side_sheild_solid_PV = new G4PVPlacement(turnAlongX, G4ThreeVector{0.0,-20*cm,0.0}, Side_sheild_solid_LV, "Side_sheild", vacuum_solid_LV, false, 0, fCheckOverlaps);
   //Side_sheild_solid_LV->SetVisAttributes(G4VisAttributes(G4Colour::Green()));
 
-
+/*
 
   //Lab66
   G4VSolid* Main_2_S = new G4Box("Main_2_solid", lab68_wall_x/2.0, lab68_wall_y/2.0 , lab68_wall_z/2.0);
@@ -1228,13 +1228,26 @@ collimation_hole_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
 
 
 // Poly need to change
-G4VSolid* Main_LeadinPoly_S = new G4Tubs("Main_1_solid", zeroRadius, LeadinPoly_radius, LeadinPoly_length/2.0, startAngle, spanningAngle);
-G4VSolid* hole_LeadinPoly_S = new G4Tubs("hole_1_solid", 0 , Scandium_diameter_limited/2.0, LeadinPoly_length+3.0*cm/2.0,startAngle, spanningAngle);
-G4SubtractionSolid* LeadinPoly_S= new G4SubtractionSolid("LeadinPoly_solid", Main_LeadinPoly_S, hole_LeadinPoly_S, NO_ROT, G4ThreeVector(0., 0, 0));
+//G4VSolid* Main_LeadinPoly_S = new G4Tubs("Main_1_solid", zeroRadius, LeadinPoly_radius, LeadinPoly_length/2.0, startAngle, spanningAngle);
+//G4VSolid* hole_LeadinPoly_S = new G4Tubs("hole_1_solid", 0 , Scandium_diameter_limited/2.0, LeadinPoly_length+3.0*cm/2.0,startAngle, spanningAngle);
+//G4SubtractionSolid* LeadinPoly_S= new G4SubtractionSolid("LeadinPoly_solid", Main_LeadinPoly_S, hole_LeadinPoly_S, NO_ROT, G4ThreeVector(0., 0, 0));
 
-G4LogicalVolume* LeadinPoly_LV = new G4LogicalVolume(LeadinPoly_S, Lead, "LeadinPoly");
-//LeadinPoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
-//LeadinPoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Blue()));
+//G4LogicalVolume* LeadinPoly_LV = new G4LogicalVolume(LeadinPoly_S, Lead, "LeadinPoly");
+////LeadinPoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
+////LeadinPoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Blue()));
+
+//BPoly inside boarted water sheild
+G4VSolid* Main69_S = new G4Box("Main69_solid", Water_cylindercal_can_radius_x/2.0 , (10*cm)/2.0 , (Water_cylindercal_can_height-Side_shield_thickness)/2.0);
+G4VSolid* hole69_S = new G4Tubs("hole69_solid", zeroRadius,fMultiplierLeadRadius, (10*cm)/2.0, startAngle, spanningAngle);
+G4SubtractionSolid* ExtraBoratedpoly_S= new G4SubtractionSolid("ExtraBoratedpoly", Main69_S, hole69_S, turnAlongX, G4ThreeVector(0., 0, -(Water_cylindercal_can_height-Side_shield_thickness)/2.0 + DT_Ti_T_location + Insulation_Thickness));
+//G4LogicalVolume* ExtraBoratedpoly_LV = new G4LogicalVolume(ExtraBoratedpoly_S, Vacuum, "ExtraBoratedpoly");
+//G4LogicalVolume* ExtraBoratedpoly_LV = new G4LogicalVolume(ExtraBoratedpoly_S, BoraxBoricAcidBuffer, "ExtraBoratedpoly");
+//G4LogicalVolume* ExtraBoratedpoly_LV = new G4LogicalVolume(ExtraBoratedpoly_S, Concrete, "ExtraBoratedpoly");
+G4LogicalVolume* ExtraBoratedpoly_LV = new G4LogicalVolume(ExtraBoratedpoly_S, BoratedPoly_15, "ExtraBoratedpoly");
+//G4LogicalVolume* ExtraBoratedpoly_LV = new G4LogicalVolume(ExtraBoratedpoly_S, BoratedPoly, "ExtraBoratedpoly");
+//ExtraBoratedpoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0.,  Water_cylindercal_can_radius/2.0, (Water_cylindercal_can_height)/2.0 - DT_Ti_T_location - Insulation_Thickness), ExtraBoratedpoly_LV, "ExtraBoratedpoly", boratedwater_LV, false, 0, fCheckOverlaps);
+new G4PVPlacement(NO_ROT, G4ThreeVector(0.,  -Water_cylindercal_can_radius/2.0+(10*cm)/2.0, -Side_shield_thickness/2.0 ), ExtraBoratedpoly_LV, "ExtraBoratedpoly", boratedwater_LV, false, 0, fCheckOverlaps);
+ExtraBoratedpoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Magenta()));
 
 
 
