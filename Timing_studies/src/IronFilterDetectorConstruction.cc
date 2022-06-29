@@ -776,7 +776,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //Side_sheild_solid_PV = new G4PVPlacement(turnAlongX, G4ThreeVector{0.0,-20*cm,0.0}, Side_sheild_solid_LV, "Side_sheild", vacuum_solid_LV, false, 0, fCheckOverlaps);
   //Side_sheild_solid_LV->SetVisAttributes(G4VisAttributes(G4Colour::Green()));
 
-/*
+
 
   //Lab66
   G4VSolid* Main_2_S = new G4Box("Main_2_solid", lab68_wall_x/2.0, lab68_wall_y/2.0 , lab68_wall_z/2.0);
