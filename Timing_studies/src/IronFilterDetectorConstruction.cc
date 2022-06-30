@@ -947,7 +947,7 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
   // Lead shield around the OVC to block the gamma:
 
   //lead shield
-/*
+
   G4double zposition_OVC= 47*cm;
   G4double z4[4]=  {-zposition_OVC-OVCShield_Width-thickness_Lead, -zposition_OVC-OVCShield_Width, -zposition_OVC-OVCShield_Width, height_Lead};
   G4double ri4[4]= {0.0, 0.0, OVCShield_Radius + OVCShield_Width ,  OVCShield_Radius + OVCShield_Width };
@@ -961,7 +961,8 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
   G4LogicalVolume*  BucketShielding_Lead_LV= new G4LogicalVolume(BucketShielding_Lead_S, Lead, "BucketShielding_Lead");
   BucketShielding_Lead_PV = new G4PVPlacement(NO_ROT, G4ThreeVector{0,0,0}, BucketShielding_Lead_LV, "BucketShielding_Lead",  vacuum_solid_LV, false, 0, true);
   BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
-*/
+
+/*
 
 //dimension cubical lead
 G4double cubical_thickness_Lead=17*cm;
@@ -988,7 +989,7 @@ G4LogicalVolume* BucketShielding_Poly_LV = new G4LogicalVolume(BucketShielding_P
 new G4PVPlacement(0, G4ThreeVector(0., 0., -cubical_thickness_Lead/2+cubical_thickness_Poly/2.0), BucketShielding_Poly_LV, "BucketShielding_Poly", BucketShielding_Lead_LV, false, 0, fCheckOverlaps);
 BucketShielding_Poly_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Green())));
 
-
+*/
 ///////////////////////////////////////
 
 
