@@ -586,7 +586,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
 
   G4double Water_cylindercal_can_radius = 152.7175*cm;
   //G4double Water_cylindercal_can_radius_x = 120*cm;
-  G4double Water_cylindercal_can_radius_x = 30*cm+152.7175*cm;//152.7175*cm;
+  G4double Water_cylindercal_can_radius_x = 20*cm+152.7175*cm;//30*cm+152.7175*cm;//152.7175*cm;
   G4double Water_cylindercal_can_height = 115.8875*cm;
   G4double ConcreteSupport_height = 90.0*cm;
 
