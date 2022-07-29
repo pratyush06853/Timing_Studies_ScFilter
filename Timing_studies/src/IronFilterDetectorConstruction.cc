@@ -1240,7 +1240,7 @@ collimation_hole_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
 ////LeadinPoly_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness, -(LeadinPoly_length-colimator_length)/2.0), LeadinPoly_LV, "LeadinPoly", collimation_hole_LV, false, 0, fCheckOverlaps);
 ////LeadinPoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Blue()));
 
-G4double ExtraBoratedpoly_thickness =25*cm;
+G4double ExtraBoratedpoly_thickness =20*cm;
 //BPoly inside boarted water sheild
 G4VSolid* Main69_S = new G4Box("Main69_solid", Water_cylindercal_can_radius_x/2.0 , (ExtraBoratedpoly_thickness)/2.0 , (Water_cylindercal_can_height)/2.0);
 G4VSolid* hole69_S = new G4Tubs("hole69_solid", zeroRadius,fMultiplierLeadRadius, (ExtraBoratedpoly_thickness)/2.0, startAngle, spanningAngle);
