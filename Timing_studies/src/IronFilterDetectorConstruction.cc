@@ -603,7 +603,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //G4double colimator_length=30.0*cm;
   G4double colimator_length=35.0*cm;//35.0*cm, 45.0*cm
 
-  G4double Side_shield_thickness=30.0*cm;//20.0*cm
+  G4double Side_shield_thickness=20.0*cm;//20.0*cm
   //dimension main semicrcular lead
   G4double thickness_Lead=18*cm;
   G4double height_Lead=50*cm;
@@ -1161,7 +1161,7 @@ boratedwater_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
 
 //Extra layer of borated poly on the Top
 G4double Up_BpolyThickness=10.0*cm;
-G4VSolid* Up_Bpoly_shield_S = new G4Box("Up_Bpoly_shield", Water_cylindercal_can_radius_x/2.0+(Up_BpolyThickness) , (Water_cylindercal_can_radius)/2.0+(Side_shield_thickness)/2.0 ,(Side_shield_thickness)/2.0);
+G4VSolid* Up_Bpoly_shield_S = new G4Box("Up_Bpoly_shield", Water_cylindercal_can_radius_x/2.0 , (Water_cylindercal_can_radius)/2.0+(Side_shield_thickness)/2.0 ,(Up_BpolyThickness)/2.0);
 //G4LogicalVolume* Up_Bpoly_shield_LV = new G4LogicalVolume(Up_Bpoly_shield_S, Polyethylene, "Up_Bpoly_shield");
 G4LogicalVolume* Up_Bpoly_shield_LV = new G4LogicalVolume(Up_Bpoly_shield_S, BoratedPoly_15, "Up_Bpoly_shield");
 Up_Bpoly_shield_LV->SetVisAttributes(G4VisAttributes(G4Colour::Yellow()));
