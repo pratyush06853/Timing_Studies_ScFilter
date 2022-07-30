@@ -603,7 +603,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //G4double colimator_length=30.0*cm;
   G4double colimator_length=35.0*cm;//35.0*cm, 45.0*cm
 
-  G4double Side_shield_thickness=20.0*cm;//20.0*cm
+  G4double Side_shield_thickness=30.0*cm;//20.0*cm
   //dimension main semicrcular lead
   G4double thickness_Lead=18*cm;
   G4double height_Lead=50*cm;
