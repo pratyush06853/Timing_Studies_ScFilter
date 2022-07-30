@@ -470,7 +470,8 @@ void IronFilterDetectorConstruction::DefineMaterials()
   soil->AddElement(elFe,0.011);
 
   //concrete
-  G4Material*concrete = new G4Material("concrete",density= 2.3*g/cm3,nComponents=10);
+  //G4Material*concrete = new G4Material("concrete",density= 2.3*g/cm3,nComponents=10);
+  G4Material*concrete = new G4Material("concrete",density= 4.81*g/cm3,nComponents=10);
   concrete->AddElement(elH,0.01);
   concrete->AddElement(elC,0.001);
   concrete->AddElement(elO,0.529107);
