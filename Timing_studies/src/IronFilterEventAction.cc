@@ -140,33 +140,33 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
             tmp_particle_name = stepCollection[i].GetParticleName();
 
 
-          //if( (tmp_volume_name=="helium")&& edep!=0){
-          //      if_helium = 1;
-          //  }
-            if( (tmp_volume_name=="1st_Leadlayer_A"||tmp_volume_name=="1st_FeCap_A")&& tmp_particle_name=="alpha"){
-                if_first = 1;
+          if( (tmp_volume_name=="helium")&& edep!=0){
+                if_helium = 1;
             }
-            if( (tmp_volume_name=="2nd_Leadlayer_A"||tmp_volume_name=="2nd_FeCap_A")&& tmp_particle_name=="alpha"){
-                if_second = 1;
-            }
-            if( (tmp_volume_name=="3rd_Leadlayer_A"||tmp_volume_name=="3rd_FeCap_A")&& tmp_particle_name=="alpha"){
-                if_third = 1;
-            }
-            if( (tmp_volume_name=="4th_Leadlayer_B"||tmp_volume_name=="4th_FeCap_B")&& tmp_particle_name=="alpha"){
-                if_fourth = 1;
-            }
-            if( (tmp_volume_name=="5th_Leadlayer_B"||tmp_volume_name=="5th_FeCap_B")&& tmp_particle_name=="alpha"){
-                if_fifth = 1;
-            }
-            if( (tmp_volume_name=="6th_Leadlayer_B"||tmp_volume_name=="6th_FeCap_B")&& tmp_particle_name=="alpha"){
-                if_sixth = 1;
-            }
+            //if( (tmp_volume_name=="1st_Leadlayer_A"||tmp_volume_name=="1st_FeCap_A")&& tmp_particle_name=="alpha"){
+            //    if_first = 1;
+            //}
+            //if( (tmp_volume_name=="2nd_Leadlayer_A"||tmp_volume_name=="2nd_FeCap_A")&& tmp_particle_name=="alpha"){
+            //    if_second = 1;
+            //}
+            //if( (tmp_volume_name=="3rd_Leadlayer_A"||tmp_volume_name=="3rd_FeCap_A")&& tmp_particle_name=="alpha"){
+            //    if_third = 1;
+            //}
+            //if( (tmp_volume_name=="4th_Leadlayer_B"||tmp_volume_name=="4th_FeCap_B")&& tmp_particle_name=="alpha"){
+            //    if_fourth = 1;
+            //}
+            //if( (tmp_volume_name=="5th_Leadlayer_B"||tmp_volume_name=="5th_FeCap_B")&& tmp_particle_name=="alpha"){
+            //    if_fifth = 1;
+            //}
+            //if( (tmp_volume_name=="6th_Leadlayer_B"||tmp_volume_name=="6th_FeCap_B")&& tmp_particle_name=="alpha"){
+            //    if_sixth = 1;
+            //}
       }
 
         // There is coincidence. Fill the wanted tracks
-        //if(if_helium==1){
+        if(if_helium==1){
         //if(if_helium==1 && (if_fourth == 1||if_second == 1)) {
-        if(if_first == 1||if_second == 1||if_third == 1||if_fourth == 1||if_fifth == 1||if_sixth == 1) {
+        //if(if_first == 1||if_second == 1||if_third == 1||if_fourth == 1||if_fifth == 1||if_sixth == 1) {
 
             for( size_t i=0; i < stepCollection.size(); ++i ){
               //tmp_volume_name = stepCollection[i].GetVolumeName();
