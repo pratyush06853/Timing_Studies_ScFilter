@@ -485,6 +485,23 @@ void IronFilterDetectorConstruction::DefineMaterials()
   concrete->AddElement(elFe,0.014);
 
 
+  //Pitts normal concrete used for base
+  G4Material*baseconcrete = new G4Material("baseconcrete",density= 2.3*g/cm3,nComponents=11);
+  //G4Material*concrete = new G4Material("concrete",density= 4.81*g/cm3,nComponents=10);
+  baseconcrete->AddElement(elFe,0.111);
+  baseconcrete->AddElement(elSi,0.0309);
+  baseconcrete->AddElement(elAl,0.0055);
+  baseconcrete->AddElement(elCa,0.2947);
+  baseconcrete->AddElement(elMg,0.0144);
+  baseconcrete->AddElement(elNa,0.0004);
+  baseconcrete->AddElement(elK,0.001);
+  baseconcrete->AddElement(elSi,0.0018);
+  baseconcrete->AddElement(elC,0.0742);
+  baseconcrete->AddElement(elH,0.0058);
+  baseconcrete->AddElement(elO,0.4603);
+
+
+
   //concrete
   //220 pound per cubic feet;
   G4Material*HDconcrete = new G4Material("HDconcrete",density= 3.52406*g/cm3,nComponents=12);
@@ -539,6 +556,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
 
   G4Material*  Soft_Tissue=G4Material::GetMaterial("soft_tissue");
   G4Material*  Concrete = G4Material::GetMaterial("concrete");
+  G4Material*  BaseConcrete = G4Material::GetMaterial("baseconcrete");
   G4Material*  HDConcrete = G4Material::GetMaterial("HDconcrete");
   G4Material*  Wood = G4Material::GetMaterial("wood");
   G4Material*  Quartz = G4Material::GetMaterial("quartz");
@@ -1207,8 +1225,8 @@ Side_Bpoly_shield_LV->SetVisAttributes(G4VisAttributes(G4Colour::Yellow()));
 
 
 G4VSolid* ConcreteSupport_S = new G4Box("ConcreteSupport", Water_cylindercal_can_radius_x/2.0 , Water_cylindercal_can_radius/2.0 , (ConcreteSupport_height)/2.0);
+G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BaseConcrete , "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Concrete, "ConcreteSupport");
-G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Concrete, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BoraxBoricAcidBuffer, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Borated_Concrete, "ConcreteSupport");
 ConcreteSupport_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+Water_cylindercal_can_radius/2.0, -(DT_Ti_T_location+Insulation_Thickness)-ConcreteSupport_height/2.0), ConcreteSupport_LV, "ConcreteSupport", vacuum_solid_LV, false, 0, fCheckOverlaps);
