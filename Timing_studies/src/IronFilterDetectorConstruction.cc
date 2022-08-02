@@ -232,7 +232,8 @@ void IronFilterDetectorConstruction::DefineMaterials()
   G4Element* elK = new G4Element("Potassium",symbol ="K",z = 19.,a= 39.098*g/mole);
   G4Element* elCa = new G4Element("Calcium",symbol ="Ca",z = 20.,a= 40.08*g/mole);
   G4Element* elFe  = new G4Element("Iron",symbol ="Fe",z = 26.,a= 55.85*g/mole);
-  G4Element* elZn  = new G4Element(name = "zinc", symbol = "Ti", z = 30.0, a = 65.38*g/mole);
+  G4Element* elMn  = new G4Element(name = "Manganese", symbol = "Mn", z = 25.0, a = 54.938*g/mole);
+  G4Element* elZn  = new G4Element(name = "zinc", symbol = "Zn", z = 30.0, a = 65.38*g/mole);
   G4Element* elRb = new G4Element("Rb",symbol ="Rb",z = 37.,a= 85.47 *g/mole);
   G4Element* elSr = new G4Element("Sr",symbol ="Sr",z = 38.,a= 87.62 *g/mole);
   G4Element* elZr = new G4Element("Zr",symbol ="Zr",z = 40.,a= 91.22 *g/mole);
@@ -470,8 +471,8 @@ void IronFilterDetectorConstruction::DefineMaterials()
   soil->AddElement(elFe,0.011);
 
   //concrete
-  //G4Material*concrete = new G4Material("concrete",density= 2.3*g/cm3,nComponents=10);
-  G4Material*concrete = new G4Material("concrete",density= 4.81*g/cm3,nComponents=10);
+  G4Material*concrete = new G4Material("concrete",density= 2.3*g/cm3,nComponents=10);
+  //G4Material*concrete = new G4Material("concrete",density= 4.81*g/cm3,nComponents=10);
   concrete->AddElement(elH,0.01);
   concrete->AddElement(elC,0.001);
   concrete->AddElement(elO,0.529107);
@@ -484,18 +485,23 @@ void IronFilterDetectorConstruction::DefineMaterials()
   concrete->AddElement(elFe,0.014);
 
 
-  //borated concrete
-  G4Material* borated_concrete = new G4Material("borated_concrete",density= 2.32*g/cm3,nComponents=10);
-  borated_concrete->AddElement(elH,0.96*perCent);
-  borated_concrete->AddElement(elC,5.36*perCent);
-  borated_concrete->AddElement(elO,51.3*perCent);
-  borated_concrete->AddElement(NatB,2.9*perCent);
-  borated_concrete->AddElement(elMg,0.42*perCent);
-  borated_concrete->AddElement(elAl,0.79*perCent);
-  borated_concrete->AddElement(elSi,15.7*perCent);
-  borated_concrete->AddElement(elS,0.42*perCent);
-  borated_concrete->AddElement(elCa,23*perCent);
-  borated_concrete->AddElement(elFe,0.50*perCent);
+  //concrete
+  //220 pound per cubic feet;
+  G4Material*HDconcrete = new G4Material("HDconcrete",density= 3.52406*g/cm3,nComponents=12);
+  HDconcrete->AddElement(elFe,0.5013);
+  HDconcrete->AddElement(elSi,0.0161);
+  HDconcrete->AddElement(elAl,0.0062);
+  HDconcrete->AddElement(elCa,0.1129);
+  HDconcrete->AddElement(elMg,0.006);
+  HDconcrete->AddElement(elNa,0.0003);
+  HDconcrete->AddElement(elK,0.00008);
+  HDconcrete->AddElement(elSi,0.0015);
+  HDconcrete->AddElement(elMn,0.0003);
+  HDconcrete->AddElement(elC,0.0229);
+  HDconcrete->AddElement(elH,0.0045);
+  HDconcrete->AddElement(elO,0.3272);
+
+
 
 
 
@@ -533,7 +539,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
 
   G4Material*  Soft_Tissue=G4Material::GetMaterial("soft_tissue");
   G4Material*  Concrete = G4Material::GetMaterial("concrete");
-  G4Material*  Borated_Concrete = G4Material::GetMaterial("borated_concrete");
+  G4Material*  HDConcrete = G4Material::GetMaterial("HDconcrete");
   G4Material*  Wood = G4Material::GetMaterial("wood");
   G4Material*  Quartz = G4Material::GetMaterial("quartz");
   G4Material*  Soil = G4Material::GetMaterial("soil");
@@ -590,8 +596,8 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   G4double Water_cylindercal_can_radius = 152.7175*cm;
   //G4double Water_cylindercal_can_radius_x = 120*cm;
   G4double Water_cylindercal_can_radius_x = 20*cm+152.7175*cm;//30*cm+152.7175*cm;//152.7175*cm;
-  G4double Water_cylindercal_can_height = 115.8875*cm;
-  G4double ConcreteSupport_height = 90.0*cm;
+  G4double Water_cylindercal_can_height = 114.3*cm;//115.8875*cm
+  G4double ConcreteSupport_height = 99.0*cm;
 
 
   G4double Poly_a = 40.0*cm;
@@ -1153,7 +1159,8 @@ G4SubtractionSolid* boratedwater_S= new G4SubtractionSolid("boratedwater", Main_
 
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Vacuum, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoraxBoricAcidBuffer, "boratedwater");
-G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Concrete, "boratedwater");
+//G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Concrete, "boratedwater");
+G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, HDConcrete, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Water, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoratedPoly, "boratedwater");
 boratedwater_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+ Water_cylindercal_can_radius/2.0, (Water_cylindercal_can_height)/2.0 - DT_Ti_T_location - Insulation_Thickness), boratedwater_LV, "BoratedWater", vacuum_solid_LV, false, 0, fCheckOverlaps);
@@ -1200,6 +1207,7 @@ Side_Bpoly_shield_LV->SetVisAttributes(G4VisAttributes(G4Colour::Yellow()));
 
 
 G4VSolid* ConcreteSupport_S = new G4Box("ConcreteSupport", Water_cylindercal_can_radius_x/2.0 , Water_cylindercal_can_radius/2.0 , (ConcreteSupport_height)/2.0);
+//G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Concrete, "ConcreteSupport");
 G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Concrete, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BoraxBoricAcidBuffer, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Borated_Concrete, "ConcreteSupport");
