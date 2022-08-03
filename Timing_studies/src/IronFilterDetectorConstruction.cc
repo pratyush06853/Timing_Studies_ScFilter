@@ -504,19 +504,34 @@ void IronFilterDetectorConstruction::DefineMaterials()
 
   //concrete
   //220 pound per cubic feet;
-  G4Material*HDconcrete = new G4Material("HDconcrete",density= 3.52406*g/cm3,nComponents=12);
-  HDconcrete->AddElement(elFe,0.5013);
-  HDconcrete->AddElement(elSi,0.0161);
-  HDconcrete->AddElement(elAl,0.0062);
-  HDconcrete->AddElement(elCa,0.1129);
-  HDconcrete->AddElement(elMg,0.006);
+  //G4Material*HDconcrete = new G4Material("HDconcrete",density= 3.52406*g/cm3,nComponents=12);
+  //HDconcrete->AddElement(elFe,0.5013);
+  //HDconcrete->AddElement(elSi,0.0161);
+  //HDconcrete->AddElement(elAl,0.0062);
+  //HDconcrete->AddElement(elCa,0.1129);
+  //HDconcrete->AddElement(elMg,0.006);
+  //HDconcrete->AddElement(elNa,0.0003);
+  //HDconcrete->AddElement(elK,0.00008);
+  //HDconcrete->AddElement(elSi,0.0015);
+  //HDconcrete->AddElement(elMn,0.0003);
+  //HDconcrete->AddElement(elC,0.0229);
+  //HDconcrete->AddElement(elH,0.0045);
+  //HDconcrete->AddElement(elO,0.3272);
+
+  //250 pound per cubic feet;
+  G4Material*HDconcrete = new G4Material("HDconcrete",density= 4.0*g/cm3,nComponents=12);
+  HDconcrete->AddElement(elFe,0.6213);
+  HDconcrete->AddElement(elSi,0.0176);
+  HDconcrete->AddElement(elAl,0.0058);
+  HDconcrete->AddElement(elCa,0.0554);
+  HDconcrete->AddElement(elMg,0.0049);
   HDconcrete->AddElement(elNa,0.0003);
-  HDconcrete->AddElement(elK,0.00008);
+  HDconcrete->AddElement(elK,0.00007);
   HDconcrete->AddElement(elSi,0.0015);
-  HDconcrete->AddElement(elMn,0.0003);
-  HDconcrete->AddElement(elC,0.0229);
-  HDconcrete->AddElement(elH,0.0045);
-  HDconcrete->AddElement(elO,0.3272);
+  HDconcrete->AddElement(elMn,0.0004);
+  HDconcrete->AddElement(elC,0.006);
+  HDconcrete->AddElement(elH,0.0039);
+  HDconcrete->AddElement(elO,0.2822);
 
 
 
@@ -1225,7 +1240,8 @@ Side_Bpoly_shield_LV->SetVisAttributes(G4VisAttributes(G4Colour::Yellow()));
 
 
 G4VSolid* ConcreteSupport_S = new G4Box("ConcreteSupport", Water_cylindercal_can_radius_x/2.0 , Water_cylindercal_can_radius/2.0 , (ConcreteSupport_height)/2.0);
-G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BaseConcrete , "ConcreteSupport");
+G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, HDConcrete , "ConcreteSupport");
+//G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BaseConcrete , "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Concrete, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BoraxBoricAcidBuffer, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Borated_Concrete, "ConcreteSupport");
