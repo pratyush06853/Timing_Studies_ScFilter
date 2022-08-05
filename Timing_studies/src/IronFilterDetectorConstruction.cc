@@ -1193,10 +1193,10 @@ G4SubtractionSolid* boratedwater_S= new G4SubtractionSolid("boratedwater", Main_
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Vacuum, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoraxBoricAcidBuffer, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Concrete, "boratedwater");
-G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BaseConcrete, "boratedwater");
+//G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BaseConcrete, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, HDConcrete, "boratedwater");
 //G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, Water, "boratedwater");
-//G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoratedPoly, "boratedwater");
+G4LogicalVolume* boratedwater_LV = new G4LogicalVolume(boratedwater_S, BoratedPoly, "boratedwater");
 boratedwater_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+ Water_cylindercal_can_radius/2.0, (Water_cylindercal_can_height)/2.0 - DT_Ti_T_location - Insulation_Thickness), boratedwater_LV, "BoratedWater", vacuum_solid_LV, false, 0, fCheckOverlaps);
 ////boratedwater_PV = new G4PVPlacement(turnAlongZ, G4ThreeVector(0., fFilterCellSpacing+Water_y/2.0, 0), boratedwater_LV, "BoratedWater", vacuum_solid_LV, false, 0, fCheckOverlaps);
 boratedwater_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
@@ -1297,7 +1297,7 @@ G4VSolid* Main70_S = new G4Box("Main69_solid", Concrete_can_x/2.0 , (Water_cylin
 G4VSolid* hole70_S = new G4Box("hole70_solid", Concrete_can_x/2.0-20*cm , (Water_cylindercal_can_radius)/2.0-(ExtraBoratedpoly_thickness)/2.0 , (Concrete_can_z)/2.0-15.0*cm);
 G4SubtractionSolid* ShellConcrete_S= new G4SubtractionSolid("ShellBoratedpoly", Main70_S, hole70_S, NO_ROT, G4ThreeVector(0., 0, -15.0*cm));
 
-G4LogicalVolume* ShellConcrete_LV = new G4LogicalVolume(ShellConcrete_S, BoratedPoly, "ShellConcrete");
+G4LogicalVolume* ShellConcrete_LV = new G4LogicalVolume(ShellConcrete_S, BaseConcrete, "ShellConcrete");
 new G4PVPlacement(NO_ROT, G4ThreeVector(0, (ExtraBoratedpoly_thickness)/2.0, -Water_cylindercal_can_height/2.0+ (Concrete_can_z)/2.0), ShellConcrete_LV, "ShellConcrete", boratedwater_LV, false, 0, fCheckOverlaps);
 ShellConcrete_LV->SetVisAttributes(G4VisAttributes(G4Colour::Magenta()));
 
