@@ -622,8 +622,8 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //G4double Water_z = 200.0*cm;
   G4double Water_z = 232.0*cm;
 
-  G4double DT_Ti_T_location = 207.5*mm;
-  G4double Insulation_Thickness = 5*mm;
+  G4double DT_Ti_T_location =200.0*mm;// 207.5*mm;
+  G4double Insulation_Thickness = 0*mm;//5*mm;
 
 
   G4double Water_cylindercal_can_radius = 152.7175*cm;
