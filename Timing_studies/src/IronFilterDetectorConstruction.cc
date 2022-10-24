@@ -495,7 +495,7 @@ void IronFilterDetectorConstruction::DefineMaterials()
   baseconcrete->AddElement(elMg,0.0144);
   baseconcrete->AddElement(elNa,0.0004);
   baseconcrete->AddElement(elK,0.001);
-  baseconcrete->AddElement(elSi,0.0018);
+  baseconcrete->AddElement(elS,0.0018);
   baseconcrete->AddElement(elC,0.0742);
   baseconcrete->AddElement(elH,0.0058);
   baseconcrete->AddElement(elO,0.4603);
@@ -1293,6 +1293,7 @@ G4VSolid* Main70_S = new G4Box("Main70_solid", Concrete_can_x/2.0 , (Water_cylin
 G4VSolid* hole70_S = new G4Box("hole70_solid", Concrete_can_x/2.0-30*cm , (Water_cylindercal_can_radius)/2.0-(ExtraBoratedpoly_thickness)/2.0 , (Concrete_can_z)/2.0-15.0*cm);
 G4SubtractionSolid* ShellConcrete_S= new G4SubtractionSolid("ShellBoratedpoly", Main70_S, hole70_S, NO_ROT, G4ThreeVector(0., 0, -15.0*cm));
 
+//G4LogicalVolume* ShellConcrete_LV = new G4LogicalVolume(ShellConcrete_S, BaseConcrete, "ShellConcrete");
 G4LogicalVolume* ShellConcrete_LV = new G4LogicalVolume(ShellConcrete_S, BaseConcrete, "ShellConcrete");
 //G4LogicalVolume* ShellConcrete_LV = new G4LogicalVolume(ShellConcrete_S, HDConcrete, "ShellConcrete");
 new G4PVPlacement(NO_ROT, G4ThreeVector(0, (ExtraBoratedpoly_thickness)/2.0, -Water_cylindercal_can_height/2.0+ (Concrete_can_z)/2.0), ShellConcrete_LV, "ShellConcrete", boratedwater_LV, false, 0, fCheckOverlaps);
