@@ -1284,8 +1284,10 @@ ExtraBoratedpoly_LV->SetVisAttributes(G4VisAttributes(G4Colour::Yellow()));
 
 
 //BPoly inside boarted water sheild
-G4double Concrete_can_x=120.0*cm;
-G4double Concrete_can_z=90*cm;
+G4double Concrete_can_x=( 120.0 + (fModeratorAluminumRadius/10 - 15.0)*2 )*cm;
+G4double Concrete_can_z=( 90.0 + (fModeratorAluminumRadius/10 - 15.0)*2 )*cm;
+//G4double Concrete_can_x= 120.0 *cm;
+//G4double Concrete_can_z= 90.0 *cm;
 G4double Concrete_can_x_thickness=30.0*cm;
 G4double Concrete_can_z_thickness=20.0*cm;//15.0*cm
 
