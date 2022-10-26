@@ -1021,7 +1021,7 @@ BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blu
 //BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes::Invisible);
 
 
-G4double cubical_thickness_Poly =7.0*cm;
+G4double cubical_thickness_Poly =2.0*cm;
 
 G4VSolid* Main_4_S = new G4Box("Main_4_solid",(OVCShield_Radius + OVCShield_Width)/2.0+cubical_thickness_Lead, (cubical_height_Lead_up+cubical_height_Lead_down)/2.0, cubical_thickness_Poly/2.0);
 G4VSolid* hole_4_S = new G4Tubs("hole_4_solid", 0 , 5.0/2.0*cm, cubical_thickness_Poly/2.0,startAngle, spanningAngle);
