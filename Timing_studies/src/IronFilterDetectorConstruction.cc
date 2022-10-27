@@ -630,7 +630,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   //G4double Water_cylindercal_can_radius_x = 120*cm;
   G4double Water_cylindercal_can_radius_x = 20*cm+152.7175*cm;//30*cm+152.7175*cm;//152.7175*cm;
   G4double Water_cylindercal_can_height = 114.3*cm;//115.8875*cm
-  G4double ConcreteSupport_height = 90.0*cm;
+  G4double ConcreteSupport_height = 90.47*cm;
 
 
   G4double Poly_a = 40.0*cm;
@@ -1008,10 +1008,11 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
 
 //dimension cubical lead
 G4double cubical_thickness_Lead=25*cm;
-G4double cubical_height_Lead_up=50*cm;
-G4double cubical_height_Lead_down=40*cm;
+G4double cubical_side_length_Lead=30*cm;
+G4double cubical_height_Lead_up=60*cm;
+G4double cubical_height_Lead_down=50*cm;
 
-G4VSolid* Main_5_S = new G4Box("Main_5_solid",(OVCShield_Radius + OVCShield_Width)/2.0+cubical_thickness_Lead, (cubical_height_Lead_up+cubical_height_Lead_down)/2.0, cubical_thickness_Lead/2.0);
+G4VSolid* Main_5_S = new G4Box("Main_5_solid",(OVCShield_Radius + OVCShield_Width)/2.0+cubical_side_length_Lead, (cubical_height_Lead_up+cubical_height_Lead_down)/2.0, cubical_thickness_Lead/2.0);
 G4VSolid* hole_5_S = new G4Tubs("hole_5_solid", 0 , 5.0/2.0*cm, cubical_thickness_Lead/2.0,startAngle, spanningAngle);
 
 G4SubtractionSolid* BucketShielding_Lead_S= new G4SubtractionSolid("BucketShielding_Lead_S", Main_5_S, hole_5_S, NO_ROT, G4ThreeVector(0., (cubical_height_Lead_up-cubical_height_Lead_down)/2 - DT_Ti_T_location - Insulation_Thickness, 0));
@@ -1023,7 +1024,7 @@ BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blu
 
 G4double cubical_thickness_Poly =2.0*cm;
 
-G4VSolid* Main_4_S = new G4Box("Main_4_solid",(OVCShield_Radius + OVCShield_Width)/2.0+cubical_thickness_Lead, (cubical_height_Lead_up+cubical_height_Lead_down)/2.0, cubical_thickness_Poly/2.0);
+G4VSolid* Main_4_S = new G4Box("Main_4_solid",(OVCShield_Radius + OVCShield_Width)/2.0+cubical_side_length_Lead, (cubical_height_Lead_up+cubical_height_Lead_down)/2.0, cubical_thickness_Poly/2.0);
 G4VSolid* hole_4_S = new G4Tubs("hole_4_solid", 0 , 5.0/2.0*cm, cubical_thickness_Poly/2.0,startAngle, spanningAngle);
 
 G4SubtractionSolid* BucketShielding_Poly_S= new G4SubtractionSolid("BucketShielding_Poly_S", Main_4_S, hole_4_S, NO_ROT, G4ThreeVector(0., (cubical_height_Lead_up-cubical_height_Lead_down)/2 - DT_Ti_T_location - Insulation_Thickness, 0));
