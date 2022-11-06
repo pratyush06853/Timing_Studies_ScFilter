@@ -150,8 +150,8 @@ int main(int argc,char** argv)
   */
 
   // Primary generator
-runManager->SetUserAction( new IronFilterGPSGeneratorAction);
-//runManager->SetUserAction( new IronFilterDTGeneratorAction);
+//runManager->SetUserAction( new IronFilterGPSGeneratorAction);
+runManager->SetUserAction( new IronFilterDTGeneratorAction);
 
 // Run action
 IronFilterRunAction* runAction = new IronFilterRunAction;
