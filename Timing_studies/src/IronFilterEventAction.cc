@@ -139,6 +139,8 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
             edep = stepCollection[i].GetDepositedEnergy();
             tmp_particle_name = stepCollection[i].GetParticleName();
 
+            //cout<<tmp_volume_name<<"  "<<tmp_particle_name<<endl;
+
 
             //if( (tmp_volume_name=="helium")&& edep!=0){
             //    if_helium = 1;
