@@ -1225,15 +1225,6 @@ Right_Side_Bpoly_shield_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(-Water_cyli
 Side_Bpoly_shield_LV->SetVisAttributes(G4VisAttributes(G4Colour::Magenta()));
 
 
-//Insulation
-//G4VSolid* Insulation_S = new G4Tubs("Insulation", zeroRadius, (2*Insulation_Thickness+34*mm)/2.0, (Water_cylindercal_can_height)/2.0, startAngle, spanningAngle);
-//G4LogicalVolume* Insulation_LV = new G4LogicalVolume(Insulation_S, Polyethylene, "Insulation");
-//Insulation_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+NeutronFilter_length+(2*Insulation_Thickness+34*mm)/2.0, (Water_cylindercal_can_height)/2.0 - DT_Ti_T_location - Insulation_Thickness), Insulation_LV, "Insulation", vacuum_solid_LV, false, 0, fCheckOverlaps);
-//Insulation_LV->SetVisAttributes(G4VisAttributes(G4Colour::Yellow()));
-
-
-
-
 //Insulation but this is actually a surface to see the neutrons coming out of the concrete and borated water
 //G4VSolid* Insulation_S = new G4Box("Insulation", Water_cylindercal_can_radius_x/2.0, delta/2.0, (Water_cylindercal_can_height+ConcreteSupport_height)/2.);
 //G4LogicalVolume* Insulation_LV = new G4LogicalVolume(Insulation_S, Vacuum, "Insulation");
@@ -1259,11 +1250,11 @@ collimation_hole_LV->SetVisAttributes(G4VisAttributes(G4Colour::Magenta()));
 
 //Water near the collimation hole
 //G4VSolid* Main_1_S = new G4Box("Main_1_solid", Water_cylindercal_can_radius_x/2.0, (Water_cylindercal_can_height+ConcreteSupport_height)/2.,colimator_length/2.0);
-G4VSolid* Water_1_S = new G4Box("Water_1_solid", Water_cylindercal_can_radius_x/2.0+ Side_shield_thickness +30.0*cm, (Water_cylindercal_can_height+ConcreteSupport_height)/2., colimator_length);
-G4VSolid* Waterhole_1_S = new G4Box("Waterhole_1_solid", Water_cylindercal_can_radius_x/2.0+ Side_shield_thickness, (Water_cylindercal_can_height+ConcreteSupport_height)/2., colimator_length);
+G4VSolid* Water_1_S = new G4Box("Water_1_solid", Water_cylindercal_can_radius_x/2.0+ Side_shield_thickness +30.0*cm, (Water_cylindercal_can_height+ConcreteSupport_height)/2., 2*colimator_length);
+G4VSolid* Waterhole_1_S = new G4Box("Waterhole_1_solid", Water_cylindercal_can_radius_x/2.0+ Side_shield_thickness, (Water_cylindercal_can_height+ConcreteSupport_height)/2., 2*colimator_length);
 G4SubtractionSolid* ExtraWater_hole_S= new G4SubtractionSolid("inner_BPoly_solid", Water_1_S, Waterhole_1_S, NO_ROT, G4ThreeVector(0.,0, 0));
 G4LogicalVolume* ExtraWater_hole_LV = new G4LogicalVolume(ExtraWater_hole_S, Water, "ExtraWater_hole");
-new G4PVPlacement(turnAlongX, G4ThreeVector(0., fFilterCellSpacing+colimator_length, (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness), ExtraWater_hole_LV, "ExtraWater", vacuum_solid_LV, false, 0, fCheckOverlaps);
+new G4PVPlacement(turnAlongX, G4ThreeVector(0., fFilterCellSpacing+2*colimator_length, (Water_cylindercal_can_height-ConcreteSupport_height)/2 - DT_Ti_T_location - Insulation_Thickness), ExtraWater_hole_LV, "ExtraWater", vacuum_solid_LV, false, 0, fCheckOverlaps);
 //ExtraWater_hole_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
 
 
