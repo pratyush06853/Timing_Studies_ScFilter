@@ -486,7 +486,8 @@ void IronFilterDetectorConstruction::DefineMaterials()
 
 
   //Pitts normal concrete used for base
-  G4Material*baseconcrete = new G4Material("baseconcrete",density= 2.3*g/cm3,nComponents=11);
+  //G4Material*baseconcrete = new G4Material("baseconcrete",density= 2.3*g/cm3,nComponents=11);
+  G4Material*baseconcrete = new G4Material("baseconcrete",density= 2.1*g/cm3,nComponents=11);
   //G4Material*concrete = new G4Material("concrete",density= 4.81*g/cm3,nComponents=10);
   baseconcrete->AddElement(elFe,0.111);
   baseconcrete->AddElement(elSi,0.0309);
