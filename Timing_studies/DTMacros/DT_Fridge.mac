@@ -1,12 +1,15 @@
-/IronFilter/det/setFilterCellSpacing 76.0 cm
-/IronFilter/det/setPolyHeight 35.0 cm
-/IronFilter/det/setMultiplierLeadHeightFront 15.0 cm
-/IronFilter/det/setModeratorAluminumHeight 30 cm
-/IronFilter/det/setModeratorTitaniumHeight 5.0 cm # to get the DT position add the number till here
-/IronFilter/det/setMultiplierLeadHeightRear 20.0 cm
-/IronFilter/det/setMultiplierLeadRadius 20.0 cm
-/IronFilter/det/setModeratorAluminumRadius 15.0 cm
-/IronFilter/det/setModeratorTitaniumRadius 15.0 cm
+#/IronFilter/det/setFilterCellSpacing 76.0 cm #76.0 cm
+/IronFilter/det/setFilterCellSpacing 86.0 cm #86.0 cm
+#/IronFilter/det/setPolyHeight 10.0 cm #Scandium 30 cm for Maganese 10 cm rod height if you need zero spacing
+/IronFilter/det/setPolyHeight 28.0 cm #Scandium 30 cm for Maganese 10 cm rod height if you need zero spacing
+/IronFilter/det/setMultiplierLeadHeightFront 25.0 cm
+/IronFilter/det/setModeratorAluminumHeight 40 cm
+/IronFilter/det/setModeratorTitaniumHeight 7.0 cm # 10cm for Mn 5cm for Sc to get the DT position add the number till here
+#/IronFilter/det/setModeratorTitaniumHeight 10.0 cm # 10cm for Mn 5cm for Sc to get the DT position add the number till here
+/IronFilter/det/setMultiplierLeadHeightRear 30.0 cm
+/IronFilter/det/setMultiplierLeadRadius 30.0 cm
+/IronFilter/det/setModeratorAluminumRadius 25.0 cm
+/IronFilter/det/setModeratorTitaniumRadius 25.0 cm
 /IronFilter/det/setTestX 0 m
 /IronFilter/det/setTestY 0 m
 /IronFilter/det/setTestZ 0 m
@@ -19,28 +22,10 @@
 /control/getEnv b
 
 /random/setSeeds {a} {b}
-#/random/setSeeds 8426 1347
 
 /process/list
-/run/printProgress 100000
+/run/printProgress 100
 
-/gps/particle neutron
-/gps/energy 14.1 MeV
-#/gps/ene/type User
-#/gps/hist/type energy
-#/gps/hist/point 0.00000046 0.01
-#/gps/hist/point 13 0.09
-#/gps/hist/point 15 0.9
+/filename/setFilename DTFridgelab_0.root
 
-#/gps/position 0 0 7.5 cm   #add all the heights/2.0-DD_Height-0.5  i.e. (20+15+30+5)/2.0-20-0.5
-/gps/position 0 161 0 cm
-/gps/ang/type iso
-
-
-#/analysis/setFileName 24Filter_test_air1_1
-#/analysis/setFileName PbFLuFe_15_20_40_IronsurrPoly_files_{SEED}_{a}_{b}   # name based on the parameters you vary
-#/analysis/setFileName PbFeSc_15_30_35_3_5_ScsurrPoly_files_{SEED}_{a}_{b}
-#/analysis/setFileName PbFluTiSc_15_30_5_35_3_5_ScsurrPoly_files_{SEED}_{a}_{b}
-/analysis/setFileName DTFridgelab_0
-/run/beamOn 1000000   #10000000
-/run/initialize
+/run/beamOn 15961 #geom66

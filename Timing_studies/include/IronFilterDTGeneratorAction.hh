@@ -79,7 +79,7 @@ private:
   TTree *t1;
   Int_t nentries;
   Double_t testE,testx,testy,testz,testxmom,testymom,testzmom,testtime;
-  //Int_t testParticleID;
+  Int_t testParticleID;
 
   //TH1F *H_Eout;
   //G4double energy_beam[1000], X_beam[1000],Y_beam[1000],Px_beam[1000],Py_beam[1000],Pz_beam[1000];//857 events so 1000 works

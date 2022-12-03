@@ -130,7 +130,7 @@ void IronFilterDTGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //cout<<eventID<<endl;
   if(eventID ==0)
   {
-  f = TFile::Open("/home/pp59a/Calibration_Setup/Calibration_Setup_PSB66/Input/CombinedDTFridgelab_geom93.root");
+  f = TFile::Open("/home/pp59a/Calibration_Setup/Calibration_Setup_PSB66/Input/CombinedDTFridgelab_geom94.root");
   //f = TFile::Open("/Volumes/GoogleDrive/My Drive/GraduateWork/Safety_DT/MergedFiles/geom93/CombinedDTFridgelab_geom93neutron.root");
   t1 = (TTree*)f->Get("IronFilter");
   nentries = (Int_t)t1->GetEntries();
@@ -143,13 +143,16 @@ void IronFilterDTGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   t1->SetBranchAddress("Ymom",&testymom);
   t1->SetBranchAddress("Zmom",&testzmom);
   t1->SetBranchAddress("Time",&testtime);
-  //t1->SetBranchAddress("ParticleType",&testParticleID);
+  t1->SetBranchAddress("ParticleType",&testParticleID);
 
 }
 
   G4double Energy,X,Y,Z,Px,Py,Pz,angle,ParticleID,T;
-  //G4String particlename="gamma";
-  G4String particlename="neutron";
+  G4String particlename="gamma";
+  if (testParticleID = 2112) {
+      G4String particlename="neutron";
+  }
+
   G4ThreeVector neutronDirection;
 
 
@@ -184,7 +187,7 @@ void IronFilterDTGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   //if (eventID==136922-1) {
   //if (eventID==128096-1) {
   //if (eventID==96945-1) {
-  if (eventID==15961-1) {
+  if (eventID == 15866875-1) {
     f->Close();
   }
 
