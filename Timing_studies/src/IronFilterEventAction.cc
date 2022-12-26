@@ -142,12 +142,12 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
             //cout<<tmp_volume_name<<"  "<<tmp_particle_name<<endl;
 
 
-            //if( (tmp_volume_name=="helium")&& edep!=0){
-            //    if_helium = 1;
-            //}
-            if( (tmp_volume_name=="CPD")&& edep!=0){
+            if( (tmp_volume_name=="helium")&& edep!=0){
                 if_helium = 1;
             }
+            //if( (tmp_volume_name=="CPD")&& edep!=0){
+            //    if_helium = 1;
+            //}
             //if( (tmp_volume_name=="1st_Leadlayer_A"||tmp_volume_name=="1st_FeCap_A")&& tmp_particle_name=="alpha"){
             //    if_first = 1;
             //}
@@ -175,8 +175,8 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
 
             for( size_t i=0; i < stepCollection.size(); ++i ){
               //tmp_volume_name = stepCollection[i].GetVolumeName();
-              //if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="helium")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
-              if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="CPD")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
+              if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="helium")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
+              //if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="CPD")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
               //if (     (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetProcessName()=="newEvent") ) {
               //if ((stepCollection[i].GetParticleName()== "alpha"&& (stepCollection[i].GetVolumeName()!="helium") && (stepCollection[i].GetDepositedEnergy()!=0) )
               //||(stepCollection[i].GetParticleName()== "neutron" && (stepCollection[i].GetVolumeName()=="helium") )) {

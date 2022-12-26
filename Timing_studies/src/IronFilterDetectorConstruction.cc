@@ -919,9 +919,7 @@ G4double CPD_Radius=38*mm;
 //detector
 G4Tubs* CPDS
   = new G4Tubs("CPDS",0,CPD_Radius,CPD_height/2.0, 0.*deg, 360.*deg);
-G4LogicalVolume* CPDLV
-  = new G4LogicalVolume(CPDS, Silicon
-, "CPDLV",0,0,0);
+G4LogicalVolume* CPDLV = new G4LogicalVolume(CPDS, Silicon, "CPDLV",0,0,0);
  new G4PVPlacement(0,               // no rotation
                   G4ThreeVector(0,0,CPD_height/2.0+4*cm), // at (x,y,z)
                   CPDLV,       // its logical volume
