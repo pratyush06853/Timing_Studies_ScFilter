@@ -175,7 +175,7 @@ void IronFilterEventAction::EndOfEventAction(const G4Event* event){
 
             for( size_t i=0; i < stepCollection.size(); ++i ){
               //tmp_volume_name = stepCollection[i].GetVolumeName();
-              if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="helium")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
+              //if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="helium")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
               //if (  (  ( (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetParticleName()== "neutron") ) && (stepCollection[i].GetVolumeName()=="CPD")) || (stepCollection[i].GetProcessName()=="newEvent") ) {
               //if (     (stepCollection[i].GetParticleName()== "gamma")  || (stepCollection[i].GetProcessName()=="newEvent") ) {
               //if ((stepCollection[i].GetParticleName()== "alpha"&& (stepCollection[i].GetVolumeName()!="helium") && (stepCollection[i].GetDepositedEnergy()!=0) )
