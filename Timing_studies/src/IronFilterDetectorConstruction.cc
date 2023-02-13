@@ -1022,7 +1022,7 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
 
 
 //dimension cubical lead
-G4double cubical_thickness_Lead=24*cm;
+G4double cubical_thickness_Lead=25*cm;
 G4double cubical_side_length_Lead=30*cm;
 G4double cubical_height_Lead_up=60*cm;
 G4double cubical_height_Lead_down=50*cm;
