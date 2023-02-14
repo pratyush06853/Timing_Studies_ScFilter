@@ -1022,10 +1022,16 @@ OVCShield_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Cyan())));
 
 
 //dimension cubical lead
-G4double cubical_thickness_Lead=25*cm;
+//G4double cubical_thickness_Lead=25*cm;
+//G4double cubical_side_length_Lead=30*cm;
+//G4double cubical_height_Lead_up=60*cm;
+//G4double cubical_height_Lead_down=50*cm;
+
+//dimension cubical lead
+G4double cubical_thickness_Lead=24*cm;
 G4double cubical_side_length_Lead=30*cm;
-G4double cubical_height_Lead_up=60*cm;
-G4double cubical_height_Lead_down=50*cm;
+G4double cubical_height_Lead_up=80*cm;
+G4double cubical_height_Lead_down=30*cm;
 
 G4VSolid* Main_5_S = new G4Box("Main_5_solid",(OVCShield_Radius + OVCShield_Width)/2.0+cubical_side_length_Lead, (cubical_height_Lead_up+cubical_height_Lead_down)/2.0, cubical_thickness_Lead/2.0);
 G4VSolid* hole_5_S = new G4Tubs("hole_5_solid", 0 , 5.0/2.0*cm, cubical_thickness_Lead/2.0,startAngle, spanningAngle);
@@ -1035,6 +1041,15 @@ G4LogicalVolume* BucketShielding_Lead_LV = new G4LogicalVolume(BucketShielding_L
 BucketShielding_Lead_PV = new G4PVPlacement(turnAlongX, G4ThreeVector(0.,  OVCShield_Radius + OVCShield_Width + cubical_thickness_Lead/2.0, (cubical_height_Lead_up-cubical_height_Lead_down)/2 - DT_Ti_T_location - Insulation_Thickness), BucketShielding_Lead_LV, "BucketShielding_Lead", vacuum_solid_LV, false, 0, fCheckOverlaps);
 BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::Blue())));
 //BucketShielding_Lead_LV->SetVisAttributes(G4VisAttributes::Invisible);
+
+
+G4double Concrete_below_lead_height=23*2.54*cm;
+
+G4VSolid* Concrete_below_lead_S = new G4Box("Concrete_below_lead",(OVCShield_Radius + OVCShield_Width)/2.0+cubical_side_length_Lead, Concrete_below_lead_height/2.0, cubical_thickness_Lead/2.0);
+G4LogicalVolume* Concrete_below_lead_LV = new G4LogicalVolume(Concrete_below_lead_S, Concrete, "Concrete_below_lead_solid");
+new G4PVPlacement(turnAlongX, G4ThreeVector(0.,  OVCShield_Radius + OVCShield_Width + cubical_thickness_Lead/2.0, - DT_Ti_T_location - Insulation_Thickness-cubical_height_Lead_down-Concrete_below_lead_height/2.0), Concrete_below_lead_LV, "Concrete_below_lead", vacuum_solid_LV, false, 0, fCheckOverlaps);
+Concrete_below_lead_LV->SetVisAttributes(G4VisAttributes(G4Colour(G4Colour::White())));
+
 
 
 G4double cubical_thickness_Poly =2.0*cm;
