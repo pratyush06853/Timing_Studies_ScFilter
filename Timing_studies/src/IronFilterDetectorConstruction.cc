@@ -627,11 +627,10 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   G4double Insulation_Thickness = 0*mm;//5*mm;
 
 
-  G4double Water_cylindercal_can_radius = 152.7175*cm;
-  //G4double Water_cylindercal_can_radius_x = 120*cm;
-  G4double Water_cylindercal_can_radius_x = 20*cm+152.7175*cm;//30*cm+152.7175*cm;//152.7175*cm;
-  G4double Water_cylindercal_can_height = 114.3*cm;//115.8875*cm
-  G4double ConcreteSupport_height = 90.47*cm;
+  G4double Water_cylindercal_can_radius = 141.92*cm;//152.7175*cm
+  G4double Water_cylindercal_can_radius_x = 171.16*cm;//172.7175*cm;
+  G4double Water_cylindercal_can_height = 114.3*cm;//114.3;
+  G4double ConcreteSupport_height = 90.47*cm; //91.44*cm
 
 
   G4double Poly_a = 40.0*cm;
