@@ -627,7 +627,7 @@ G4VPhysicalVolume* IronFilterDetectorConstruction::DefineVolumes()
   G4double Insulation_Thickness = 0*mm;//5*mm;
 
 
-  G4double Water_cylindercal_can_radius = 152.4*cm;//152.7175*cm 141.92*cm 
+  G4double Water_cylindercal_can_radius = 152.4*cm;//152.7175*cm 141.92*cm
   G4double Water_cylindercal_can_radius_x = 171.16*cm;//172.7175*cm;
   G4double Water_cylindercal_can_height = 114.3*cm;//114.3;
   G4double ConcreteSupport_height = 90.47*cm; //91.44*cm
@@ -1340,15 +1340,15 @@ new G4PVPlacement(NO_ROT, G4ThreeVector(0, (ExtraBoratedpoly_thickness)/2.0, -Wa
 
 
 
-//G4VSolid* ConcreteSupport_S = new G4Box("ConcreteSupport", Water_cylindercal_can_radius_x/2.0 , (Water_cylindercal_can_radius)/2.0 , (ConcreteSupport_height)/2.0);
-G4VSolid* ConcreteSupport_S = new G4Box("ConcreteSupport", Concrete_can_x/2.0 , (Water_cylindercal_can_radius)/2.0-(ExtraBoratedpoly_thickness)/2.0 , (ConcreteSupport_height)/2.0);
+G4VSolid* ConcreteSupport_S = new G4Box("ConcreteSupport", Water_cylindercal_can_radius_x/2.0 , (Water_cylindercal_can_radius)/2.0 , (ConcreteSupport_height)/2.0);
+//G4VSolid* ConcreteSupport_S = new G4Box("ConcreteSupport", Concrete_can_x/2.0 , (Water_cylindercal_can_radius)/2.0-(ExtraBoratedpoly_thickness)/2.0 , (ConcreteSupport_height)/2.0);
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, HDConcrete , "ConcreteSupport");
 G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BaseConcrete , "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Concrete, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, BoraxBoricAcidBuffer, "ConcreteSupport");
 //G4LogicalVolume* ConcreteSupport_LV = new G4LogicalVolume(ConcreteSupport_S, Borated_Concrete, "ConcreteSupport");
-ConcreteSupport_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+Water_cylindercal_can_radius/2.0+(ExtraBoratedpoly_thickness/2.0), -(DT_Ti_T_location+Insulation_Thickness)-ConcreteSupport_height/2.0), ConcreteSupport_LV, "ConcreteSupport", vacuum_solid_LV, false, 0, fCheckOverlaps);
-//ConcreteSupport_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+Water_cylindercal_can_radius/2.0, -(DT_Ti_T_location+Insulation_Thickness)-ConcreteSupport_height/2.0), ConcreteSupport_LV, "ConcreteSupport", vacuum_solid_LV, false, 0, fCheckOverlaps);
+//ConcreteSupport_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+Water_cylindercal_can_radius/2.0+(ExtraBoratedpoly_thickness/2.0), -(DT_Ti_T_location+Insulation_Thickness)-ConcreteSupport_height/2.0), ConcreteSupport_LV, "ConcreteSupport", vacuum_solid_LV, false, 0, fCheckOverlaps);
+ConcreteSupport_PV = new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+Water_cylindercal_can_radius/2.0, -(DT_Ti_T_location+Insulation_Thickness)-ConcreteSupport_height/2.0), ConcreteSupport_LV, "ConcreteSupport", vacuum_solid_LV, false, 0, fCheckOverlaps);
 //ConcreteSupport_LV->SetVisAttributes(G4VisAttributes(G4Colour::Grey()));
 //ConcreteSupport_LV->SetVisAttributes(G4VisAttributes(G4Colour::Cyan()));
 
@@ -1371,10 +1371,9 @@ PolyAround_ConcreteSupport_LV->SetVisAttributes(G4VisAttributes(G4Colour::White(
 
 //borated Poly in front at the concrete
 G4VSolid* BoratedPolyInFrontConcrete_S = new G4Box("BoratedPolyInFrontConcrete", Water_cylindercal_can_radius_x/2.0 ,ExtraBoratedpoly_thickness/2.0 , (ConcreteSupport_height)/2.0);
-//G4LogicalVolume* BoratedPolyInFrontConcrete_LV = new G4LogicalVolume(BoratedPolyInFrontConcrete_S, BaseConcrete, "BoratedPolyInFrontConcrete");
 G4LogicalVolume* BoratedPolyInFrontConcrete_LV = new G4LogicalVolume(BoratedPolyInFrontConcrete_S, BoratedPoly , "BoratedPolyInFrontConcrete");
-new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+ExtraBoratedpoly_thickness/2.0, -(DT_Ti_T_location+Insulation_Thickness)-ConcreteSupport_height/2.0), BoratedPolyInFrontConcrete_LV, "BoratedPolyInFrontConcrete", vacuum_solid_LV, false, 0, fCheckOverlaps);
-BoratedPolyInFrontConcrete_LV->SetVisAttributes(G4VisAttributes(G4Colour::White()));
+//new G4PVPlacement(NO_ROT, G4ThreeVector(0., fFilterCellSpacing+ExtraBoratedpoly_thickness/2.0, -(DT_Ti_T_location+Insulation_Thickness)-ConcreteSupport_height/2.0), BoratedPolyInFrontConcrete_LV, "BoratedPolyInFrontConcrete", vacuum_solid_LV, false, 0, fCheckOverlaps);
+//BoratedPolyInFrontConcrete_LV->SetVisAttributes(G4VisAttributes(G4Colour::White()));
 
 //moderator in made of of Borated Poly surrounds Sc
 //G4VSolid* MainShield_1_S = new G4Tubs("MainShield_1_solid", zeroRadius,fMultiplierLeadRadius, NeutronFilter_length/2.0, startAngle, spanningAngle);
